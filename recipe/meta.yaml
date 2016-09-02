@@ -15,15 +15,27 @@ build:
 
 requirements:
     build:
+        - toolchain
         - gcc
         - perl
+        - gcc  # [osx]
+        - libgfortran  # [linux]
     run:
-        - gcc
+        - libgfortran  # [not win]
 
 test:
+
+    requires:
+        - gcc  # [osx]
+
+    files:
+        - hellow.c
+        - hellow.f
+        - hellow.f90
+
     commands:
         - mpicc --help
-        - mpif90 --help  # [linux]
+        - mpif90 --help
 
 about:
     home: http://www.mpich.org/
