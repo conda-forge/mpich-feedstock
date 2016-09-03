@@ -1,12 +1,5 @@
 #!/bin/bash
 
-if [[ $(uname) == Linux ]]; then
-  # FIXME: This is a terrible workaround.
-  # Ideally we should fix the information the .la files.
-  rm -rf $PREFIX/lib/libquadmath.la
-  rm -rf $PREFIX/lib/libgfortran.la
-fi
-
 if [ "$(uname)" == "Darwin" ]
 then
     export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib
