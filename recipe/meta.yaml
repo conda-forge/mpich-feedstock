@@ -10,23 +10,21 @@ source:
     sha256: 0778679a6b693d7b7caff37ff9d2856dc2bfc51318bf8373859bfa74253da3dc
 
 build:
-    number: 0
+    number: 1
     skip: True  # [win]
 
 requirements:
     build:
-        - toolchain
         - gcc
         - perl
-        - gcc  # [osx]
-        - libgfortran  # [linux]
     run:
-        - libgfortran  # [not win]
+        - libgfortran  # [osx]
+        - libgcc  # [linux]
 
 test:
 
     requires:
-        - gcc  # [osx]
+        - gcc  # [not win]
 
     files:
         - hellow.c
