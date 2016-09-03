@@ -1,4 +1,4 @@
-# Stop on first error
+# Stop on first error.
 set -e
 
 # Test compilers. For this we need to set DYLD_FALLBACK_LIBRARY_PATH to
@@ -11,20 +11,24 @@ set -e
 
 export DYLD_FALLBACK_LIBRARY_PATH=${CONDA_PREFIX}/lib
 
-# Test C compiler
+pushd $RECIPE_DIR/tests
+
+# Test C compiler.
 echo "Testing mpicc"
 mpicc -show
 mpicc hellow.c -o hellow_c
 mpirun -n 4 ./hellow_c
 
-# Test f77 compiler
+# Test f77 compiler.
 echo "Testing mpif77"
 mpif77 -show
 mpif77 hellow.f -o hellow_f
 mpirun -n 4 ./hellow_f
 
-# Test f90 compiler
+# Test f90 compiler.
 echo "Testing mpif90"
 mpif90 -show
 mpif90 hellow.f90 -o hellow_f90
 mpirun -n 4 ./hellow_f90
+
+popd

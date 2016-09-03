@@ -10,7 +10,7 @@ source:
     sha256: 0778679a6b693d7b7caff37ff9d2856dc2bfc51318bf8373859bfa74253da3dc
 
 build:
-    number: 1
+    number: 2
     skip: True  # [win]
 
 requirements:
@@ -22,25 +22,24 @@ requirements:
         - libgcc  # [linux]
 
 test:
-
     requires:
         - gcc  # [not win]
-
     files:
-        - hellow.c
-        - hellow.f
-        - hellow.f90
-
+        - tests/hellow.c
+        - tests/hellow.f
+        - tests/hellow.f90
     commands:
         - mpicc --help
         - mpif90 --help
+        - conda inspect linkages -n _test mpich  # [not win]
+        - conda inspect objects -n _test mpich  # [osx]
 
 about:
     home: http://www.mpich.org/
     license: mpich license
     license_file: license.txt
     license_family: Other
-    summary: A high performance widely portable implementation of the MPI standard
+    summary: 'A high performance widely portable implementation of the MPI standard.'
     description: |
       MPICH is a high performance and widely portable implementation of the
       Message Passing Interface (MPI) standard.
