@@ -1,16 +1,6 @@
 # Stop on first error.
 set -e
 
-# Test compilers. For this we need to set DYLD_FALLBACK_LIBRARY_PATH to
-# make sure libgfortran gets picked up. Ideally this shouldn't be needed, but
-# this is how the gfortran compiler works in conda - see:
-#
-#   https://github.com/ContinuumIO/anaconda-issues/issues/739
-#
-# for more details.
-
-export DYLD_FALLBACK_LIBRARY_PATH=${CONDA_PREFIX}/lib
-
 pushd $RECIPE_DIR/tests
 
 # Test C compiler.

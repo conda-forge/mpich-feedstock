@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$(uname)" == "Darwin" ]; then
-    export DYLD_FALLBACK_LIBRARY_PATH=$PREFIX/lib
+    export LDFLAGS="-Wl,-rpath,$PREFIX/lib"
     export CC=clang
     export CXX=clang++
     export MACOSX_DEPLOYMENT_TARGET="10.9"
