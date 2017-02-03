@@ -18,5 +18,3 @@ export LIBRARY_PATH="${PREFIX}/lib"
 make
 make testing
 make install
-
-cp $RECIPE_DIR/license.txt $SRC_DIR/license.txt

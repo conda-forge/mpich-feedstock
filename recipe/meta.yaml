@@ -35,8 +35,8 @@ test:
 
 about:
     home: http://www.mpich.org/
-    license: mpich license
-    license_file: license.txt
+    license: MPICH
+    license_file: COPYRIGHT
     license_family: Other
     summary: 'A high performance widely portable implementation of the MPI standard.'
     description: |
