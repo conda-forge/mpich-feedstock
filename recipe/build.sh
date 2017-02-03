@@ -1,20 +1,15 @@
 #!/bin/bash
 
-if [ "$(uname)" == "Darwin" ]; then
-    export LDFLAGS="-Wl,-rpath,$PREFIX/lib"
-    export CC=clang
-    export CXX=clang++
-    export MACOSX_DEPLOYMENT_TARGET="10.9"
-    export CXXFLAGS="-stdlib=libc++ $CXXFLAGS"
-    export CXXFLAGS="$CXXFLAGS -stdlib=libc++"
+if [ $(uname) == Darwin ]; then
+    export LDFLAGS="$LDFLAGS -Wl,-rpath,$PREFIX/lib"
 fi
 
-export LIBRARY_PATH="${PREFIX}/lib"
+export LIBRARY_PATH="$PREFIX/lib"
 
 ./configure --prefix=$PREFIX \
-            --enable-shared \
-            --enable-fortran=yes
+            --disable-dependency-tracking \
+            --enable-cxx \
+            --enable-fortran
 
 make
-make testing
 make install

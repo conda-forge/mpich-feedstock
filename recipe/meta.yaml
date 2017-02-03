@@ -15,23 +15,23 @@ build:
 
 requirements:
     build:
-        - gcc
+        - gcc  # [not win]
+        - toolchain
     run:
-        - libgfortran  # [osx]
         - libgcc  # [linux]
+        - libgfortran  # [osx]
 
 test:
     requires:
         - gcc  # [not win]
     files:
-        - tests/hellow.c
-        - tests/hellow.f
-        - tests/hellow.f90
+        - tests/helloworld.c
+        - tests/helloworld.cxx
+        - tests/helloworld.f
+        - tests/helloworld.f90
     commands:
-        - mpicc --help
-        - mpif90 --help
-        - conda inspect linkages -n _test mpich  # [not win]
-        - conda inspect objects -n _test mpich  # [osx]
+        - conda inspect objects mpich  # [osx]
+        - conda inspect linkages mpich  # [not win]
 
 about:
     home: http://www.mpich.org/
