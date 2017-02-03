@@ -16,7 +16,6 @@ build:
 requirements:
     build:
         - gcc
-        - perl
     run:
         - libgfortran  # [osx]
         - libgcc  # [linux]
