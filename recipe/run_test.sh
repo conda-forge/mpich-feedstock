@@ -1,24 +1,33 @@
-# Stop on first error.
-set -e
+#!/bin/bash
+
+command -v mpichversion
+mpichversion
+
+command -v mpicc
+mpicc -show
+
+command -v mpicxx
+mpicxx -show
+
+command -v mpif90
+mpif90 -show
+
+command -v mpiexec
+MPIEXEC="mpiexec -launcher fork"
+$MPIEXEC --help
 
 pushd $RECIPE_DIR/tests
 
-# Test C compiler.
-echo "Testing mpicc"
-mpicc -show
-mpicc hellow.c -o hellow_c
-mpirun -n 4 ./hellow_c
+mpicc helloworld.c -o helloworld_c
+$MPIEXEC -n 4 ./helloworld_c
 
-# Test f77 compiler.
-echo "Testing mpif77"
-mpif77 -show
-mpif77 hellow.f -o hellow_f
-mpirun -n 4 ./hellow_f
+mpicxx helloworld.cxx -o helloworld_cxx
+$MPIEXEC -n 4 ./helloworld_cxx
 
-# Test f90 compiler.
-echo "Testing mpif90"
-mpif90 -show
-mpif90 hellow.f90 -o hellow_f90
-mpirun -n 4 ./hellow_f90
+mpif77 helloworld.f -o helloworld_f
+$MPIEXEC -n 4 ./helloworld_f
+
+mpif90 helloworld.f90 -o helloworld_f90
+$MPIEXEC -n 4 ./helloworld_f90
 
 popd
