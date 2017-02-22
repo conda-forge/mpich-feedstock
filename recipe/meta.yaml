@@ -14,7 +14,7 @@ build:
     number: {{ build }}
     skip: True  # [win]
     track_features:
-      - mpi_mpich
+      - mpich
 
 requirements:
     build:
