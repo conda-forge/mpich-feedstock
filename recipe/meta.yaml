@@ -10,7 +10,7 @@ source:
     sha256: 0778679a6b693d7b7caff37ff9d2856dc2bfc51318bf8373859bfa74253da3dc
 
 build:
-    number: 4
+    number: 5
     skip: True  # [win]
 
 requirements:
@@ -29,9 +29,9 @@ test:
         - tests/helloworld.cxx
         - tests/helloworld.f
         - tests/helloworld.f90
-    commands:
-        - conda inspect objects mpich  # [osx]
-        - conda inspect linkages mpich  # [not win]
+#   commands:
+#       - conda inspect objects mpich  # [osx]
+#       - conda inspect linkages mpich  # [not win]
 
 about:
     home: http://www.mpich.org/
