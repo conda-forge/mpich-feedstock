@@ -17,8 +17,8 @@ command -v mpiexec
 pushd $RECIPE_DIR/tests
 
 function mpi_exec() {
-  # redirect output through pipes to avoid O_NONBLOCK issues on stdout
-  mpiexec -launcher fork $@ 2>&1 | cat
+  # use pipes to avoid O_NONBLOCK issues on stdin, stdout
+  mpiexec -launcher fork $@ 2>&1 </dev/null | cat
 }
 
 mpicc helloworld.c -o helloworld_c
