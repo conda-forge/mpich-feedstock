@@ -17,14 +17,8 @@ command -v mpiexec
 pushd $RECIPE_DIR/tests
 
 function mpi_exec() {
-  if [[ "$(uname)" == "Darwin" ]]; then
-    mpiexec -launcher fork $@
-    python no-nonblock.py
-  else
-    # skip mpiexec tests on Linux due to conda-forge bug:
-    # https://github.com/conda-forge/conda-smithy/pull/337
-    echo "SKIPPING mpiexec $@"
-  fi
+  # redirect output through pipes to avoid O_NONBLOCK issues on stdout
+  mpiexec -launcher fork $@ 2>&1 | cat
 }
 
 mpicc helloworld.c -o helloworld_c
