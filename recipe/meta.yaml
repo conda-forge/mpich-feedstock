@@ -1,5 +1,4 @@
 {% set version = "3.2" %}
-{% set build = 6 %}
 
 package:
     name: mpich
@@ -11,10 +10,8 @@ source:
     sha256: 0778679a6b693d7b7caff37ff9d2856dc2bfc51318bf8373859bfa74253da3dc
 
 build:
-    number: {{ build }}
+    number: 6
     skip: True  # [win]
-    features:
-      - mpich
 
 requirements:
     build:
@@ -23,7 +20,7 @@ requirements:
     run:
         - libgcc  # [linux]
         - libgfortran  # [osx]
-        - mpi
+        - mpi 1.0 mpich
 
 test:
     requires:
