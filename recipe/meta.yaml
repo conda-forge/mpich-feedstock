@@ -1,4 +1,4 @@
-{% set version = "3.2" %}
+{% set version = "3.2.1" %}
 
 package:
     name: mpich
@@ -7,10 +7,10 @@ package:
 source:
     fn: mpich-{{ version }}.tar.gz
     url: http://www.mpich.org/static/downloads/{{ version }}/mpich-{{ version }}.tar.gz
-    sha256: 0778679a6b693d7b7caff37ff9d2856dc2bfc51318bf8373859bfa74253da3dc
+    sha256: 5db53bf2edfaa2238eb6a0a5bc3d2c2ccbfbb1badd79b664a1a919d2ce2330f1
 
 build:
-    number: 6
+    number: 0
     skip: True  # [win]
 
 requirements:
