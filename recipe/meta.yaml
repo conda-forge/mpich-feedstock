@@ -13,7 +13,7 @@ build:
     number: 1
     skip: True  # [win]
     run_exports:
-        - {{ pin_compatible('mpich', max_pin='x.x') }}
+        - {{ pin_compatible('mpich', min_pin='x.x', max_pin='x.x') }}
 
 requirements:
     build:
