@@ -17,10 +17,10 @@ build:
 
 requirements:
     build:
-        - {{ compiler('fortran') }}
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
     host:
+        - {{ compiler('fortran') }}
     run:
         - mpi 1.0 mpich
 
