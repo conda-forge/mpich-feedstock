@@ -17,11 +17,11 @@ build:
 
 requirements:
     build:
-        - gcc  # [not win]
-        - toolchain
+        - {{ compiler('fortran') }}
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+    host:
     run:
-        - libgcc  # [linux]
-        - libgfortran  # [osx]
         - mpi 1.0 mpich
 
 test:
