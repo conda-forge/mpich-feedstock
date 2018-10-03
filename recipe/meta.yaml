@@ -16,11 +16,10 @@ build:
         - {{ pin_subpackage('mpich', min_pin='x.x', max_pin='x.x') }}
 
 requirements:
-    build:
+    host:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
-    host: []
     run:
         - mpi 1.0 mpich
 
