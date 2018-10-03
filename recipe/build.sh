@@ -2,11 +2,13 @@
 
 # configure balks if F90 is defined
 # with a fatal deprecation message pointing to FC
-unset F90
+unset F90 F77
 
 if [ $(uname) == Darwin ]; then
     export LDFLAGS="$LDFLAGS -Wl,-rpath,$PREFIX/lib"
 fi
+
+export FCFLAGS="$FFLAGS"
 
 export LIBRARY_PATH="$PREFIX/lib"
 
