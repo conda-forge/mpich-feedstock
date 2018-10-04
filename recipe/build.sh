@@ -8,6 +8,12 @@ if [ $(uname) == Darwin ]; then
     export LDFLAGS="$LDFLAGS -Wl,-rpath,$PREFIX/lib"
 fi
 
+# avoid absolute-paths in compilers
+export CC=$(basename "$CC")
+export CXX=$(basename "$CXX")
+export FC=$(basename "$FC")
+
+# from anaconda recipe, not sure if it matters
 export FCFLAGS="$FFLAGS"
 
 export LIBRARY_PATH="$PREFIX/lib"
