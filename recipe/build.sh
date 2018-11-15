@@ -23,5 +23,5 @@ export LIBRARY_PATH="$PREFIX/lib"
             --enable-cxx \
             --enable-fortran
 
-make -j"${CPU_COUNT:-1}"
+make -j"${CPU_COUNT:-1}" V=1
 make install
