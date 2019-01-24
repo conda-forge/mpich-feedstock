@@ -2,8 +2,8 @@
 # -*- mode: jinja -*-
 -->
 
-About mpich
-===========
+About mpich-mpi
+===============
 
 Home: http://www.mpich.org/
 
@@ -31,20 +31,22 @@ Current release info
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-mpich-green.svg)](https://anaconda.org/conda-forge/mpich) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mpich.svg)](https://anaconda.org/conda-forge/mpich) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mpich.svg)](https://anaconda.org/conda-forge/mpich) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mpich.svg)](https://anaconda.org/conda-forge/mpich) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-mpich--mpicc-green.svg)](https://anaconda.org/conda-forge/mpich-mpicc) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mpich-mpicc.svg)](https://anaconda.org/conda-forge/mpich-mpicc) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mpich-mpicc.svg)](https://anaconda.org/conda-forge/mpich-mpicc) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mpich-mpicc.svg)](https://anaconda.org/conda-forge/mpich-mpicc) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-mpich--mpicxx-green.svg)](https://anaconda.org/conda-forge/mpich-mpicxx) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mpich-mpicxx.svg)](https://anaconda.org/conda-forge/mpich-mpicxx) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mpich-mpicxx.svg)](https://anaconda.org/conda-forge/mpich-mpicxx) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mpich-mpicxx.svg)](https://anaconda.org/conda-forge/mpich-mpicxx) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-mpich--mpifort-green.svg)](https://anaconda.org/conda-forge/mpich-mpifort) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mpich-mpifort.svg)](https://anaconda.org/conda-forge/mpich-mpifort) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mpich-mpifort.svg)](https://anaconda.org/conda-forge/mpich-mpifort) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mpich-mpifort.svg)](https://anaconda.org/conda-forge/mpich-mpifort) |
 
-Installing mpich
-================
+Installing mpich-mpi
+====================
 
-Installing `mpich` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `mpich-mpi` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `mpich, mpich-mpicc` can be installed with:
+Once the `conda-forge` channel has been enabled, `mpich, mpich-mpicc, mpich-mpicxx, mpich-mpifort` can be installed with:
 
 ```
-conda install mpich mpich-mpicc
+conda install mpich mpich-mpicc mpich-mpicxx mpich-mpifort
 ```
 
 It is possible to list all of the versions of `mpich` available on your platform with:
@@ -92,17 +94,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating mpich-feedstock
-========================
+Updating mpich-mpi-feedstock
+============================
 
-If you would like to improve the mpich recipe or build a new
+If you would like to improve the mpich-mpi recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/mpich-feedstock are
+Note that all branches in the conda-forge/mpich-mpi-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
