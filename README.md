@@ -1,3 +1,7 @@
+<!--
+# -*- mode: jinja -*-
+-->
+
 About mpich
 ===========
 
@@ -26,6 +30,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-mpich-green.svg)](https://anaconda.org/conda-forge/mpich) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mpich.svg)](https://anaconda.org/conda-forge/mpich) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mpich.svg)](https://anaconda.org/conda-forge/mpich) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mpich.svg)](https://anaconda.org/conda-forge/mpich) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-mpich--mpicc-green.svg)](https://anaconda.org/conda-forge/mpich-mpicc) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mpich-mpicc.svg)](https://anaconda.org/conda-forge/mpich-mpicc) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mpich-mpicc.svg)](https://anaconda.org/conda-forge/mpich-mpicc) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mpich-mpicc.svg)](https://anaconda.org/conda-forge/mpich-mpicc) |
 
 Installing mpich
 ================
@@ -36,10 +41,10 @@ Installing `mpich` from the `conda-forge` channel can be achieved by adding `con
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `mpich` can be installed with:
+Once the `conda-forge` channel has been enabled, `mpich, mpich-mpicc` can be installed with:
 
 ```
-conda install mpich
+conda install mpich mpich-mpicc
 ```
 
 It is possible to list all of the versions of `mpich` available on your platform with:
@@ -51,6 +56,8 @@ conda search mpich --channel conda-forge
 
 About conda-forge
 =================
+
+[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
 
 conda-forge is a community-led conda channel of installable packages.
 In order to provide high-quality builds, the process has been automated into the
@@ -106,3 +113,14 @@ In order to produce a uniquely identifiable distribution:
  * If the version of a package **is** being increased, please remember to return
    the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
    back to 0.
+
+Feedstock Maintainers
+=====================
+
+* [@astrofrog-conda-forge](https://github.com/astrofrog-conda-forge/)
+* [@bekozi](https://github.com/bekozi/)
+* [@dalcinl](https://github.com/dalcinl/)
+* [@minrk](https://github.com/minrk/)
+* [@msarahan](https://github.com/msarahan/)
+* [@ocefpaf](https://github.com/ocefpaf/)
+
