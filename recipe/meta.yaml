@@ -1,8 +1,9 @@
 {% set version = "3.2.1" %}
 
 package:
-    name: mpich
-    version: {{ version }}
+  # must not match any outputs for requirements to be handled correctly
+  name: mpich-mpi
+  version: {{ version }}
 
 source:
     fn: mpich-{{ version }}.tar.gz
