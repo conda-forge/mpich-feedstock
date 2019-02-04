@@ -16,7 +16,7 @@ build:
 
 outputs:
   - name: mpich
-    script: build.sh
+    script: build-mpich.sh
     build:
       run_exports:
         - {{ pin_subpackage('mpich', min_pin='x.x', max_pin='x.x') }}
