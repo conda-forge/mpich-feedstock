@@ -15,8 +15,8 @@ mpif90 -show
 
 command -v mpiexec
 
-# test files doesn't work with multiple outputs
-pushd "$RECIPE_DIR/tests"
+
+pushd "tests"
 
 function mpi_exec() {
   # use pipes to avoid O_NONBLOCK issues on stdin, stdout
@@ -24,11 +24,7 @@ function mpi_exec() {
 }
 
 if [[ $PKG_NAME == "mpich" ]]; then
-  cat >test.py <<EOF
-import os
-print(os.getpid())
-EOF
-  mpi_exec -n 4 python test.py
+  mpi_exec -n 4 python test_exec.py
 fi
 
 if [[ $PKG_NAME == "mpich-mpicc" ]]; then

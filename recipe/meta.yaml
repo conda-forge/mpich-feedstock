@@ -30,6 +30,8 @@ outputs:
         - mpi 1.0 mpich
     test:
       script: run_test.sh
+      files:
+        - tests/test_exec.py
       requires:
         - python >=3
 
