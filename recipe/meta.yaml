@@ -37,7 +37,11 @@ outputs:
 
   - name: mpich-mpicc
     build:
-      script: echo 'ok'
+      script:
+        - echo 'ok'  # [not osx]
+        # make CONDA_BUILD_SYSROOT a 'used variable'
+        # so that conda-build knows to pass it to the test env
+        - echo "{{CONDA_BUILD_SYSROOT}}"  # [osx]
     requirements:
       run:
         - {{ pin_subpackage('mpich', exact=True) }}
@@ -45,13 +49,16 @@ outputs:
         - {{ compiler('c') }}
     test:
       script: run_test.sh
-      # test files doesn't work with multiple outputs
       files:
         - tests/helloworld.c
 
   - name: mpich-mpicxx
     build:
-      script: echo 'ok'
+      script:
+        - echo 'ok'  # [not osx]
+        # make CONDA_BUILD_SYSROOT a 'used variable'
+        # so that conda-build knows to pass it to the test env
+        - echo "{{CONDA_BUILD_SYSROOT}}"  # [osx]
     requirements:
       run:
         - {{ pin_subpackage('mpich', exact=True) }}
@@ -59,20 +66,22 @@ outputs:
         - {{ compiler('cxx') }}
     test:
       script: run_test.sh
-      # test files doesn't work with multiple outputs
       files:
         - tests/helloworld.cxx
 
   - name: mpich-mpifort
     build:
-      script: echo 'ok'
+      script:
+        - echo 'ok'  # [not osx]
+        # make CONDA_BUILD_SYSROOT a 'used variable'
+        # so that conda-build knows to pass it to the test env
+        - echo "{{CONDA_BUILD_SYSROOT}}"  # [osx]
     requirements:
       run:
         - {{ pin_subpackage('mpich', exact=True) }}
         - {{ compiler('fortran') }}
     test:
       script: run_test.sh
-      # test files doesn't work with multiple outputs
       files:
         - tests/helloworld.f
         - tests/helloworld.f90
