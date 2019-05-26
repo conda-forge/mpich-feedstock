@@ -20,6 +20,8 @@ export FCFLAGS="$FFLAGS"
 # See Compiler Flags section of MPICH readme
 export MPICHLIB_CFLAGS=$CFLAGS
 unset CFLAGS
+export MPICHLIB_CPPFLAGS=$CPPFLAGS
+unset CPPFLAGS
 export MPICHLIB_CXXFLAGS=$CXXFLAGS
 unset CXXFLAGS
 export MPICHLIB_LDFLAGS=$LDFLAGS
@@ -32,6 +34,7 @@ unset FCFLAGS
 # set some specific flags that we *do* want recorded in the compilers
 # only the bare minimum of prefix-awareness here
 export CFLAGS="-I$PREFIX/include"
+export CPPFLAGS="-I$PREFIX/include"
 export CXXFLAGS="-I$PREFIX/include"
 export FFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib"
