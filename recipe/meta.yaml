@@ -11,7 +11,7 @@ source:
     sha256: 5db53bf2edfaa2238eb6a0a5bc3d2c2ccbfbb1badd79b664a1a919d2ce2330f1
 
 build:
-    number: 1009
+    number: 1010
     skip: True  # [win]
 
 outputs:
@@ -25,6 +25,7 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
+        - make  # [unix]
       host: []
       run:
         - mpi 1.0 mpich
