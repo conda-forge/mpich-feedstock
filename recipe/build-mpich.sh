@@ -43,6 +43,7 @@ export LIBRARY_PATH="$PREFIX/lib"
 
 ./configure --prefix=$PREFIX \
             --disable-dependency-tracking \
+            --disable-wrapper-rpath \
             --enable-cxx \
             --enable-fortran
 
