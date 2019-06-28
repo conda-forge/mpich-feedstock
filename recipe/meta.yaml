@@ -11,12 +11,12 @@ source:
     sha256: 5db53bf2edfaa2238eb6a0a5bc3d2c2ccbfbb1badd79b664a1a919d2ce2330f1
 
 build:
-    number: 1012
-    skip: True  # [win]
+  number: 1013
+  skip: True  # [win]
 
 outputs:
   - name: mpich
-    script: build-mpich.sh
+    script: build-mpi.sh
     build:
       run_exports:
         - {{ pin_subpackage('mpich', max_pin='x.x') }}
@@ -32,9 +32,8 @@ outputs:
     test:
       script: run_test.sh
       files:
-        - tests/test_exec.py
-      requires:
-        - python >=3
+        - mpiexec.sh
+        - tests/helloworld.sh
 
   - name: mpich-mpicc
     build:
@@ -51,6 +50,7 @@ outputs:
     test:
       script: run_test.sh
       files:
+        - mpiexec.sh
         - tests/helloworld.c
 
   - name: mpich-mpicxx
@@ -68,6 +68,7 @@ outputs:
     test:
       script: run_test.sh
       files:
+        - mpiexec.sh
         - tests/helloworld.cxx
 
   - name: mpich-mpifort
@@ -84,6 +85,7 @@ outputs:
     test:
       script: run_test.sh
       files:
+        - mpiexec.sh
         - tests/helloworld.f
         - tests/helloworld.f90
 

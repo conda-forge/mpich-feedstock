@@ -1,48 +1,58 @@
 #!/bin/bash
-set -x
+set -ex
 
-command -v mpichversion
-mpichversion
-
-command -v mpicc
-mpicc -show
-
-command -v mpicxx
-mpicxx -show
-
-command -v mpif90
-mpif90 -show
-
-command -v mpiexec
-
+export HYDRA_LAUNCHER=fork
+MPIEXEC="${PWD}/mpiexec.sh"
 
 pushd "tests"
 
-function mpi_exec() {
-  # use pipes to avoid O_NONBLOCK issues on stdin, stdout
-  mpiexec -launcher fork $@ 2>&1 </dev/null | cat
-}
-
 if [[ $PKG_NAME == "mpich" ]]; then
-  mpi_exec -n 4 python test_exec.py
+  command -v mpichversion
+  mpichversion
+
+  command -v mpiexec
+  $MPIEXEC -n 1 mpivars
+  $MPIEXEC -n 4 ./helloworld.sh
 fi
 
 if [[ $PKG_NAME == "mpich-mpicc" ]]; then
+  command -v mpicc
+  mpicc -show
+
   mpicc $CFLAGS $LDFLAGS helloworld.c -o helloworld_c
-  mpi_exec -n 4 ./helloworld_c
+  $MPIEXEC -n 4 ./helloworld_c
 fi
 
 if [[ $PKG_NAME == "mpich-mpicxx" ]]; then
+  command -v mpicxx
+  mpicxx -show
+
   mpicxx $CXXFLAGS $LDFLAGS helloworld.cxx -o helloworld_cxx
-  mpi_exec -n 4 ./helloworld_cxx
+  $MPIEXEC -n 4 ./helloworld_cxx
 fi
 
 if [[ $PKG_NAME == "mpich-mpifort" ]]; then
-  mpif77 $FFLAGS $LDFLAGS helloworld.f -o helloworld_f
-  mpi_exec -n 4 ./helloworld_f
+  command -v mpifort
+  mpifort -show
 
-  mpif90 $FFLAGS $LDFLAGS helloworld.f90 -o helloworld_f90
-  mpi_exec -n 4 ./helloworld_f90
+  mpifort $FFLAGS $LDFLAGS helloworld.f -o helloworld1_f
+  $MPIEXEC -n 4 ./helloworld1_f
+
+  mpifort $FFLAGS $LDFLAGS helloworld.f90 -o helloworld1_f90
+  $MPIEXEC -n 4 ./helloworld1_f90
+
+  command -v mpif77
+  mpif77 -show
+
+  mpif77 $FFLAGS $LDFLAGS helloworld.f -o helloworld2_f
+  $MPIEXEC -n 4 ./helloworld2_f
+
+  command -v mpif90
+  mpif90 -show
+
+  mpif90 $FFLAGS $LDFLAGS helloworld.f90 -o helloworld2_f90
+  $MPIEXEC -n 4 ./helloworld2_f90
+
 fi
 
 popd
