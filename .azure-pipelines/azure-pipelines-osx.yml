@@ -10,8 +10,11 @@ jobs:
   strategy:
     maxParallel: 8
     matrix:
-      osx_:
-        CONFIG: osx_
+      osx_mpi_typeconda:
+        CONFIG: osx_mpi_typeconda
+        UPLOAD_PACKAGES: True
+      osx_mpi_typeexternal:
+        CONFIG: osx_mpi_typeexternal
         UPLOAD_PACKAGES: True
 
   steps:
