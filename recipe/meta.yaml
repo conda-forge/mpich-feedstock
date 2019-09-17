@@ -60,8 +60,6 @@ outputs:
         - {{ pin_subpackage('mpich', exact=True) }}
         # host C compilers work fine (better) on mac
         - {{ compiler('c') }}
-      run_constrained:
-        - mpich ==*!=external_*
     test:
       script: run_test.sh
       files:
@@ -80,8 +78,6 @@ outputs:
         - {{ pin_subpackage('mpich', exact=True) }}
         # host C compilers work fine (better) on mac
         - {{ compiler('cxx') }}
-      run_constrained:
-        - mpich ==*!=external_*
     test:
       script: run_test.sh
       files:
@@ -99,8 +95,6 @@ outputs:
       run:
         - {{ pin_subpackage('mpich', exact=True) }}
         - {{ compiler('fortran') }}
-      run_constrained:
-        - mpich ==*!=external_*
     test:
       script: run_test.sh
       files:
