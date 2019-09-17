@@ -1,4 +1,5 @@
 {% set version = "3.3.1" %}
+{% set build = 1 %}
 
 package:
   # must not match any outputs for requirements to be handled correctly
@@ -6,15 +7,27 @@ package:
   version: {{ version }}
 
 source:
-    fn: mpich-{{ version }}.tar.gz
-    url: http://www.mpich.org/static/downloads/{{ version }}/mpich-{{ version }}.tar.gz
-    sha256: fe551ef29c8eea8978f679484441ed8bb1d943f6ad25b63c235d4b9243d551e5
+  fn: mpich-{{ version }}.tar.gz
+  url: http://www.mpich.org/static/downloads/{{ version }}/mpich-{{ version }}.tar.gz
+  sha256: fe551ef29c8eea8978f679484441ed8bb1d943f6ad25b63c235d4b9243d551e5
 
 build:
-  number: 0
+  number: {{ build }}
   skip: True  # [win]
 
 outputs:
+  {% if build_shim == 'yes' %}
+  - name: mpich
+    string: "external_{{ build }}"
+    track_features:
+      - mpich_external
+    requirements:
+      run:
+        - mpi 1.0 mpich
+    test:
+      commands:
+        - echo "It works!"
+  {% else %}
   - name: mpich
     script: build-mpi.sh
     build:
@@ -88,24 +101,26 @@ outputs:
         - mpiexec.sh
         - tests/helloworld.f
         - tests/helloworld.f90
+  {% endif %}
 
 about:
-    home: http://www.mpich.org/
-    license: MPICH
-    license_file: COPYRIGHT
-    license_family: Other
-    summary: 'A high performance widely portable implementation of the MPI standard.'
-    description: |
-      MPICH is a high performance and widely portable implementation of the
-      Message Passing Interface (MPI) standard.
-    doc_url: http://www.mpich.org/documentation/guides
-    dev_url: https://wiki.mpich.org/mpich/index.php/Main_Page
+  home: http://www.mpich.org/
+  license: MPICH
+  license_file: COPYRIGHT
+  license_family: Other
+  summary: 'A high performance widely portable implementation of the MPI standard.'
+  description: |
+    MPICH is a high performance and widely portable implementation of the
+    Message Passing Interface (MPI) standard.
+  doc_url: http://www.mpich.org/documentation/guides
+  dev_url: https://wiki.mpich.org/mpich/index.php/Main_Page
 
 extra:
-    recipe-maintainers:
-        - astrofrog-conda-forge
-        - bekozi
-        - dalcinl
-        - minrk
-        - msarahan
-        - ocefpaf
+  recipe-maintainers:
+    - astrofrog-conda-forge
+    - bekozi
+    - dalcinl
+    - minrk
+    - msarahan
+    - ocefpaf
+    - beckermr
