@@ -16,7 +16,7 @@ build:
   skip: True  # [win]
 
 outputs:
-  {% if build_shim == 'yes' %}
+  {% if mpi == 'nompi' %}
   - name: mpich
     string: "external_{{ build }}"
     track_features:
