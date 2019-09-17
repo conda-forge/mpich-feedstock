@@ -16,11 +16,11 @@ build:
   skip: True  # [win]
 
 outputs:
-  {% if mpi == 'nompi' %}
+  {% if mpi_type == 'external' %}
   - name: mpich
-    string: "external_{{ build }}"
+    string: "{{ mpi_type }}_{{ build }}"
     track_features:
-      - mpich_external
+      - mpich_{{ mpi_type }}
     requirements:
       run:
         - mpi 1.0 mpich
@@ -60,6 +60,8 @@ outputs:
         - {{ pin_subpackage('mpich', exact=True) }}
         # host C compilers work fine (better) on mac
         - {{ compiler('c') }}
+      run_constrained:
+        - mpich !=*=external_*
     test:
       script: run_test.sh
       files:
@@ -78,6 +80,8 @@ outputs:
         - {{ pin_subpackage('mpich', exact=True) }}
         # host C compilers work fine (better) on mac
         - {{ compiler('cxx') }}
+      run_constrained:
+        - mpich !=*=external_*
     test:
       script: run_test.sh
       files:
@@ -95,6 +99,8 @@ outputs:
       run:
         - {{ pin_subpackage('mpich', exact=True) }}
         - {{ compiler('fortran') }}
+      run_constrained:
+        - mpich !=*=external_*
     test:
       script: run_test.sh
       files:
