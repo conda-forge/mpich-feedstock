@@ -24,6 +24,13 @@ Current build status
         <img alt="macOS" src="https://img.shields.io/travis/conda-forge/mpich-feedstock/master.svg?label=macOS">
       </a>
     </td>
+  </tr><tr>
+    <td>Drone</td>
+    <td>
+      <a href="https://cloud.drone.io/conda-forge/mpich-feedstock">
+        <img alt="linux" src="https://img.shields.io/drone/build/conda-forge/master.svg?label=Linux">
+      </a>
+    </td>
   </tr>
     
   <tr>
@@ -38,38 +45,59 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux</td>
+              <td>linux_aarch64_mpi_typeconda</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_mpi_typeconda" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64</td>
+              <td>linux_aarch64_mpi_typeexternal</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_mpi_typeexternal" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le</td>
+              <td>linux_mpi_typeconda</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_ppc64le_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_mpi_typeconda" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_fortran_compiler_version4</td>
+              <td>linux_mpi_typeexternal</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=osx&configuration=osx_fortran_compiler_version4" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_mpi_typeexternal" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_fortran_compiler_version7</td>
+              <td>linux_ppc64le_mpi_typeconda</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=osx&configuration=osx_fortran_compiler_version7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_ppc64le_mpi_typeconda" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_ppc64le_mpi_typeexternal</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_ppc64le_mpi_typeexternal" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_mpi_typeconda</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=osx&configuration=osx_mpi_typeconda" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_mpi_typeexternal</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=osx&configuration=osx_mpi_typeexternal" alt="variant">
                 </a>
               </td>
             </tr>
@@ -182,6 +210,7 @@ Feedstock Maintainers
 =====================
 
 * [@astrofrog-conda-forge](https://github.com/astrofrog-conda-forge/)
+* [@beckermr](https://github.com/beckermr/)
 * [@bekozi](https://github.com/bekozi/)
 * [@dalcinl](https://github.com/dalcinl/)
 * [@minrk](https://github.com/minrk/)

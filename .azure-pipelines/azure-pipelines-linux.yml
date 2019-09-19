@@ -10,14 +10,14 @@ jobs:
   strategy:
     maxParallel: 8
     matrix:
-      linux_:
-        CONFIG: linux_
+      linux_mpi_typeconda:
+        CONFIG: linux_mpi_typeconda
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_aarch64_:
-        CONFIG: linux_aarch64_
+      linux_mpi_typeexternal:
+        CONFIG: linux_mpi_typeexternal
         UPLOAD_PACKAGES: True
-        DOCKER_IMAGE: condaforge/linux-anvil-aarch64
+        DOCKER_IMAGE: condaforge/linux-anvil-comp7
   steps:
   # configure qemu binfmt-misc running.  This allows us to run docker containers
   # embedded qemu-static
