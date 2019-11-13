@@ -1,5 +1,5 @@
-{% set version = "3.3.1" %}
-{% set build = 1 %}
+{% set version = "3.3.2" %}
+{% set build = 0 %}
 
 package:
   # must not match any outputs for requirements to be handled correctly
@@ -9,7 +9,7 @@ package:
 source:
   fn: mpich-{{ version }}.tar.gz
   url: http://www.mpich.org/static/downloads/{{ version }}/mpich-{{ version }}.tar.gz
-  sha256: fe551ef29c8eea8978f679484441ed8bb1d943f6ad25b63c235d4b9243d551e5
+  sha256: 4bfaf8837a54771d3e4922c84071ef80ffebddbb6971a006038d91ee7ef959b9
 
 build:
   number: {{ build }}
