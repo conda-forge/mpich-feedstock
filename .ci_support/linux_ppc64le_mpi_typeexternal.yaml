@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '8'
+- '9'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -9,12 +9,15 @@ channel_targets:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '8'
+- '9'
 docker_image:
 - condaforge/linux-anvil-ppc64le
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '8'
+- '9'
 mpi_type:
 - external
+target_platform:
+- linux-ppc64le
