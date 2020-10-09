@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: linux_aarch64_mpi_typeconda
+name: linux_aarch64_mpi_typecondatarget_p_hf25f091771
 
 platform:
   os: linux
@@ -10,7 +10,7 @@ steps:
 - name: Install and build
   image: condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_mpi_typeconda
+    CONFIG: linux_aarch64_mpi_typecondatarget_platformlinux-aarch64
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -31,7 +31,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_mpi_typeexternal
+name: linux_aarch64_mpi_typeexternaltarge_h6af53587bf
 
 platform:
   os: linux
@@ -41,7 +41,7 @@ steps:
 - name: Install and build
   image: condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_mpi_typeexternal
+    CONFIG: linux_aarch64_mpi_typeexternaltarget_platformlinux-aarch64
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:

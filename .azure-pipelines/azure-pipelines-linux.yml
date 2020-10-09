@@ -8,12 +8,12 @@ jobs:
     vmImage: ubuntu-16.04
   strategy:
     matrix:
-      linux_64_mpi_typeconda:
-        CONFIG: linux_64_mpi_typeconda
+      linux_64_mpi_typecondatarget_platformlinux-64:
+        CONFIG: linux_64_mpi_typecondatarget_platformlinux-64
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-      linux_64_mpi_typeexternal:
-        CONFIG: linux_64_mpi_typeexternal
+      linux_64_mpi_typeexternaltarget_platformlinux-64:
+        CONFIG: linux_64_mpi_typeexternaltarget_platformlinux-64
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
     maxParallel: 8

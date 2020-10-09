@@ -49,59 +49,59 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_mpi_typeconda</td>
+              <td>linux_64_mpi_typecondatarget_platformlinux-64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpi_typeconda" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpi_typecondatarget_platformlinux-64" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpi_typeexternal</td>
+              <td>linux_64_mpi_typeexternaltarget_platformlinux-64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpi_typeexternal" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_64_mpi_typeexternaltarget_platformlinux-64" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpi_typeconda</td>
+              <td>linux_aarch64_mpi_typecondatarget_platformlinux-aarch64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_mpi_typeconda" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_mpi_typecondatarget_platformlinux-aarch64" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpi_typeexternal</td>
+              <td>linux_aarch64_mpi_typeexternaltarget_platformlinux-aarch64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_mpi_typeexternal" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_mpi_typeexternaltarget_platformlinux-aarch64" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpi_typeconda</td>
+              <td>linux_ppc64le_mpi_typecondatarget_platformlinux-ppc64le</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_ppc64le_mpi_typeconda" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_ppc64le_mpi_typecondatarget_platformlinux-ppc64le" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpi_typeexternal</td>
+              <td>linux_ppc64le_mpi_typeexternaltarget_platformlinux-ppc64le</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_ppc64le_mpi_typeexternal" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=linux&configuration=linux_ppc64le_mpi_typeexternaltarget_platformlinux-ppc64le" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpi_typeconda</td>
+              <td>osx_64_mpi_typecondatarget_platformosx-64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpi_typeconda" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpi_typecondatarget_platformosx-64" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpi_typeexternal</td>
+              <td>osx_64_mpi_typeexternaltarget_platformosx-64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpi_typeexternal" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpi_typeexternaltarget_platformosx-64" alt="variant">
                 </a>
               </td>
             </tr>

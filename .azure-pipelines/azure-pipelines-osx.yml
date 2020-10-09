@@ -8,11 +8,11 @@ jobs:
     vmImage: macOS-10.15
   strategy:
     matrix:
-      osx_64_mpi_typeconda:
-        CONFIG: osx_64_mpi_typeconda
+      osx_64_mpi_typecondatarget_platformosx-64:
+        CONFIG: osx_64_mpi_typecondatarget_platformosx-64
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpi_typeexternal:
-        CONFIG: osx_64_mpi_typeexternal
+      osx_64_mpi_typeexternaltarget_platformosx-64:
+        CONFIG: osx_64_mpi_typeexternaltarget_platformosx-64
         UPLOAD_PACKAGES: 'True'
     maxParallel: 8
   timeoutInMinutes: 360
