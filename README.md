@@ -3,7 +3,7 @@ About mpich-mpi
 
 Home: http://www.mpich.org/
 
-Package license: MPICH
+Package license: LicenseRef-MPICH
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/mpich-feedstock/blob/master/LICENSE.txt)
 
