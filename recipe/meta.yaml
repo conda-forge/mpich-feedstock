@@ -39,7 +39,8 @@ outputs:
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
         - make  # [unix]
-      host: []
+      host:
+        - {{ compiler('fortran') }}  # hack to force conda to make both fortran abi builds
       run:
         - mpi 1.0 mpich
     test:
