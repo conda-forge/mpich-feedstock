@@ -1,6 +1,15 @@
 {% set version = "3.3.2" %}
 {% set build = 1 %}
 
+# conda build is not making unique hashes for the different
+# fortran compiler versions
+# we are hacking the build number to do that for now
+{% if fortran_compiler_version == "9" %}
+{% set build = build*2 + 0 %}
+{% else %}
+{% set build = build*2 + 1 %}
+{% endif %}
+
 package:
   # must not match any outputs for requirements to be handled correctly
   name: mpich-mpi
@@ -14,10 +23,6 @@ source:
 build:
   number: {{ build }}
   skip: True  # [win]
-
-requirements:
-  build:
-   - {{ compiler('fortran') }}
 
 outputs:
   {% if mpi_type == 'external' %}
