@@ -15,6 +15,10 @@ build:
   number: {{ build }}
   skip: True  # [win]
 
+requirements:
+  build:
+   - {{ compiler('fortran') }}
+
 outputs:
   {% if mpi_type == 'external' %}
   - name: mpich
