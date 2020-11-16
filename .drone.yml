@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_h3bc3f8165e
+name: linux_aarch64_fortran_compiler_vers_h50b1089b24
 
 platform:
   os: linux
@@ -8,9 +8,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpi_typecondatarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_fortran_compiler_version7mpi_typeconda
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -31,7 +31,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_h41a4611554
+name: linux_aarch64_fortran_compiler_vers_h1d63bc3d4a
 
 platform:
   os: linux
@@ -39,9 +39,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpi_typeexternaltarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_fortran_compiler_version7mpi_typeexternal
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -62,7 +62,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_h539ba524cf
+name: linux_aarch64_fortran_compiler_vers_hd0bafcb3c5
 
 platform:
   os: linux
@@ -70,9 +70,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpi_typecondatarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_fortran_compiler_version9mpi_typeconda
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -93,7 +93,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_h277264f12e
+name: linux_aarch64_fortran_compiler_vers_hd10fd039c3
 
 platform:
   os: linux
@@ -101,9 +101,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpi_typeexternaltarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_fortran_compiler_version9mpi_typeexternal
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
