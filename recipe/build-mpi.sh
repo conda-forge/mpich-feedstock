@@ -40,6 +40,10 @@ export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib"
 
 export LIBRARY_PATH="$PREFIX/lib"
 
+if [[ $target_platform == osx-arm64 ]]; then
+    export FFLAGS="-I$PREFIX/include -fallow-argument-mismatch"
+fi
+
 ./configure --prefix=$PREFIX \
             --disable-dependency-tracking \
             --enable-cxx \
