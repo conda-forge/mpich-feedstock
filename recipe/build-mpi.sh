@@ -11,6 +11,8 @@ export CC=$(basename "$CC")
 export CXX=$(basename "$CXX")
 export FC=$(basename "$FC")
 
+./autogen.sh
+
 # avoid recording flags in compilers
 # See Compiler Flags section of MPICH readme
 # TODO: configure ignores MPICHLIB_LDFLAGS
