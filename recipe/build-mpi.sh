@@ -75,7 +75,17 @@ if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && $target_platform == osx-arm64 ]]; t
     export pac_cv_prog_fc_int_kind_16=8
     export pac_cv_prog_fc_int_kind_8=4
     export pac_cv_prog_fc_works=yes
-    # export pac_cv_prog_fc_cross=no
+    export CROSS_F90_ADDRESS_KIND=8
+    export CROSS_F90_OFFSET_KIND=8
+    export CROSS_F90_INTEGER_KIND=4
+    export CROSS_F90_SIZEOF_INTEGER=4
+    export CROSS_F90_SIZEOF_REAL=4
+    export CROSS_F90_SIZEOF_DOUBLE_PRECISION=8
+    export CROSS_F90_REAL_MODEL=' 6 , 37'
+    export CROSS_F90_DOUBLE_MODEL=' 15 , 307'
+    export CROSS_F90_INTEGER_MODEL=' 9'
+    export CROSS_F90_ALL_INTEGER_MODELS=' 2 , 1, 4 , 2, 9 , 4, 18 , 8,'
+    export CROSS_F90_INTEGER_MODEL_MAP=' {  2 , 1 , 1 }, {  4 , 2 , 2 }, {  9 , 4 , 4 }, {  18 , 8 , 8 },'
 fi
 
 ./configure --prefix=$PREFIX \
