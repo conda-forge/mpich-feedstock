@@ -11,6 +11,8 @@ export CC=$(basename "$CC")
 export CXX=$(basename "$CXX")
 export FC=$(basename "$FC")
 
+./autogen.sh
+
 # avoid recording flags in compilers
 # See Compiler Flags section of MPICH readme
 # TODO: configure ignores MPICHLIB_LDFLAGS
@@ -37,6 +39,55 @@ export FCFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib"
 
 export LIBRARY_PATH="$PREFIX/lib"
+
+if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && $target_platform == osx-arm64 ]]; then
+    export FFLAGS=$FFLAGS" -fallow-argument-mismatch"
+    export pac_cv_f77_accepts_F=yes
+    export pac_cv_f77_flibs_valid=unknown
+    export pac_cv_f77_sizeof_double_precision=8
+    export pac_cv_f77_sizeof_integer=4
+    export pac_cv_f77_sizeof_real=4
+    export pac_cv_fc_accepts_F90=yes
+    export pac_cv_fc_and_f77=yes
+    export pac_cv_fc_module_case=lower
+    export pac_cv_fc_module_ext=mod
+    export pac_cv_fc_module_incflag=-I
+    export pac_cv_fc_module_outflag=-J
+    export pac_cv_fort90_real8=yes
+    export pac_cv_fort_integer16=yes
+    export pac_cv_fort_integer1=yes
+    export pac_cv_fort_integer2=yes
+    export pac_cv_fort_integer4=yes
+    export pac_cv_fort_integer8=yes
+    export pac_cv_fort_real16=no
+    export pac_cv_fort_real4=yes
+    export pac_cv_fort_real8=yes
+    export pac_cv_prog_f77_and_c_stdio_libs=none
+    export pac_cv_prog_f77_exclaim_comments=yes
+    export pac_cv_prog_f77_has_incdir=-I
+    export pac_cv_prog_f77_library_dir_flag=-L
+    export pac_cv_prog_f77_mismatched_args=yes
+    export pac_cv_prog_f77_mismatched_args_parm=
+    export pac_cv_prog_f77_name_mangle='lower uscore'
+    export CROSS_F77_TRUE_VALUE=1
+    export CROSS_F77_FALSE_VALUE=0
+    export pac_cv_prog_fc_and_c_stdio_libs=none
+    export pac_cv_prog_fc_int_kind_16=8
+    export pac_cv_prog_fc_int_kind_8=4
+    export pac_cv_prog_fc_works=yes
+    export CROSS_F90_ADDRESS_KIND=8
+    export CROSS_F90_OFFSET_KIND=8
+    export CROSS_F90_INTEGER_KIND=4
+    export CROSS_F90_SIZEOF_INTEGER=4
+    export CROSS_F90_SIZEOF_REAL=4
+    export CROSS_F90_SIZEOF_DOUBLE_PRECISION=8
+    export CROSS_F90_REAL_MODEL=' 6 , 37'
+    export CROSS_F90_DOUBLE_MODEL=' 15 , 307'
+    export CROSS_F90_INTEGER_MODEL=' 9'
+    export CROSS_F90_ALL_INTEGER_MODELS=' 2 , 1, 4 , 2, 9 , 4, 18 , 8,'
+    export CROSS_F90_INTEGER_MODEL_MAP=' {  2 , 1 , 1 }, {  4 , 2 , 2 }, {  9 , 4 , 4 }, {  18 , 8 , 8 },'
+    export pac_MOD='mod'
+fi
 
 ./configure --prefix=$PREFIX \
             --disable-dependency-tracking \
