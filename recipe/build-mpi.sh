@@ -86,6 +86,7 @@ if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && $target_platform == osx-arm64 ]]; t
     export CROSS_F90_INTEGER_MODEL=' 9'
     export CROSS_F90_ALL_INTEGER_MODELS=' 2 , 1, 4 , 2, 9 , 4, 18 , 8,'
     export CROSS_F90_INTEGER_MODEL_MAP=' {  2 , 1 , 1 }, {  4 , 2 , 2 }, {  9 , 4 , 4 }, {  18 , 8 , 8 },'
+    export pac_MOD='mod'
 fi
 
 ./configure --prefix=$PREFIX \
