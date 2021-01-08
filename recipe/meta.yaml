@@ -19,6 +19,8 @@ source:
   fn: mpich-{{ version }}.tar.gz
   url: http://www.mpich.org/static/downloads/{{ version }}/mpich-{{ version }}.tar.gz
   sha256: ce5e238f0c3c13ab94a64936060cff9964225e3af99df1ea11b130f20036c24b
+  patches:
+    - 0001-Update-config.sub-and-config.guess.patch
 
 build:
   number: {{ build }}
