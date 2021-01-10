@@ -8,17 +8,11 @@ jobs:
     vmImage: macOS-10.15
   strategy:
     matrix:
-      osx_64_fortran_compiler_version7mpi_typeconda:
-        CONFIG: osx_64_fortran_compiler_version7mpi_typeconda
+      osx_64_mpi_typeconda:
+        CONFIG: osx_64_mpi_typeconda
         UPLOAD_PACKAGES: 'True'
-      osx_64_fortran_compiler_version7mpi_typeexternal:
-        CONFIG: osx_64_fortran_compiler_version7mpi_typeexternal
-        UPLOAD_PACKAGES: 'True'
-      osx_64_fortran_compiler_version9mpi_typeconda:
-        CONFIG: osx_64_fortran_compiler_version9mpi_typeconda
-        UPLOAD_PACKAGES: 'True'
-      osx_64_fortran_compiler_version9mpi_typeexternal:
-        CONFIG: osx_64_fortran_compiler_version9mpi_typeexternal
+      osx_64_mpi_typeexternal:
+        CONFIG: osx_64_mpi_typeexternal
         UPLOAD_PACKAGES: 'True'
       osx_arm64_mpi_typeconda:
         CONFIG: osx_arm64_mpi_typeconda

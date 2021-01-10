@@ -1,5 +1,5 @@
-{% set version = "3.3.2" %}
-{% set build = 2 %}
+{% set version = "3.4" %}
+{% set build = 0 %}
 
 # conda build is not making unique hashes for the different
 # fortran compiler versions
@@ -18,7 +18,9 @@ package:
 source:
   fn: mpich-{{ version }}.tar.gz
   url: http://www.mpich.org/static/downloads/{{ version }}/mpich-{{ version }}.tar.gz
-  sha256: 4bfaf8837a54771d3e4922c84071ef80ffebddbb6971a006038d91ee7ef959b9
+  sha256: ce5e238f0c3c13ab94a64936060cff9964225e3af99df1ea11b130f20036c24b
+  patches:
+    - 0001-Update-config.sub-and-config.guess.patch
 
 build:
   number: {{ build }}

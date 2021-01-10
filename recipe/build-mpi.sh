@@ -93,7 +93,8 @@ fi
             --disable-dependency-tracking \
             --enable-cxx \
             --enable-fortran \
-            --disable-wrapper-rpath
+            --disable-wrapper-rpath \
+            --with-device=ch3
 
 make -j"${CPU_COUNT:-1}"
 make install
