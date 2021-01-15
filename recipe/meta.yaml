@@ -1,5 +1,5 @@
 {% set version = "3.4" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 # conda build is not making unique hashes for the different
 # fortran compiler versions
@@ -43,7 +43,7 @@ outputs:
     script: build-mpi.sh
     build:
       run_exports:
-        - {{ pin_subpackage('mpich', max_pin='x.x') }}
+        - {{ pin_subpackage('mpich', max_pin='x') }}
     requirements:
       build:
         - {{ compiler('c') }}
