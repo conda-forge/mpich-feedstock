@@ -19,9 +19,9 @@ if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && $target_platform == osx-arm64 ]]; t
         echo "copying config to $config_folder ...\n"
         cp -v $BUILD_PREFIX/share/gnuconfig/config.* $config_folder
     done
+    
+    ./autogen.sh
 fi
-
-./autogen.sh
 
 # avoid recording flags in compilers
 # See Compiler Flags section of MPICH readme
