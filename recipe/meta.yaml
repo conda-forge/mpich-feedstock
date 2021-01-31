@@ -19,8 +19,8 @@ source:
   fn: mpich-{{ version }}.tar.gz
   url: http://www.mpich.org/static/downloads/{{ version }}/mpich-{{ version }}.tar.gz
   sha256: 8836939804ef6d492bcee7d54abafd6477d2beca247157d92688654d13779727
-  patches:
-    - 0001-Update-config.sub-and-config.guess.patch  # [arm64]
+  #patches:
+  #  - 0001-Update-config.sub-and-config.guess.patch  # [arm64]
 
 build:
   number: {{ build }}
@@ -53,6 +53,7 @@ outputs:
         - automake  # [unix]
         - libtool   # [unix]
         - make  # [unix]
+        - gnuconfig  # [arm64]
 
       host:
         - {{ fortran_compiler }}_{{ target_platform }} {{ fortran_compiler_version }}  # hack to force conda to make both fortran abi builds
