@@ -92,6 +92,7 @@ if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && $target_platform == osx-arm64 ]]; t
     # https://conda-forge.org/blog/posts/2020-10-29-macos-arm64/
     list_config_to_patch=$(find ./ -name config.guess | sed -r 's/config.guess//')
     for config_folder in $list_config_to_patch; do
+        echo "copying config to $config_folder ...\n"
         cp -v $BUILD_PREFIX/share/gunconfig/config.* $config_folder
     done
 fi
