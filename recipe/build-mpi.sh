@@ -104,6 +104,7 @@ fi
             --enable-cxx \
             --enable-fortran \
             --disable-wrapper-rpath \
+            --disable-opencl \
             --with-device=ch3
 
 make -j"${CPU_COUNT:-1}"
