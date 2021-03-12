@@ -1,13 +1,8 @@
 {% set version = "3.4.1" %}
-{% set build = 1 %}
+{% set build = 104 %}
 
-# conda build is not making unique hashes for the different
-# fortran compiler versions
-# we are hacking the build number to do that for now
-{% if fortran_compiler_version == "9" %}
-{% set build = build*2 + 0 %}
-{% else %}
-{% set build = build*2 + 1 %}
+{% if mpi_type == 'external' %}
+{% set build = build - 100 %}
 {% endif %}
 
 package:
