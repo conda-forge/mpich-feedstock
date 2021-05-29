@@ -1,8 +1,9 @@
 {% set version = "3.4.2" %}
 {% set build = 0 %}
 
-{% if mpi_type == 'external' %}
-{% set build = build - 100 %}
+# give conda package a higher build number
+{% if mpi_type == 'conda' %}
+{% set build = build + 100 %}
 {% endif %}
 
 package:
