@@ -58,6 +58,7 @@ outputs:
       files:
         - mpiexec.sh
         - tests/helloworld.sh
+        - mpiexec
 
   - name: mpich-mpicc
     build:
