@@ -11,6 +11,7 @@ if [[ $PKG_NAME == "mpich" ]]; then
   mpichversion
 
   command -v mpiexec
+  $MPIEXEC
   $MPIEXEC -n 1 mpivars
   $MPIEXEC -n 4 ./helloworld.sh
 fi
