@@ -99,6 +99,12 @@ if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && $target_platform == osx-arm64 ]]; t
     export pac_MOD='mod'
 fi
 
+if [[ "$target_platform" == linux-* ]]; then
+    # On linux-aarch64 centos image there's also a /usr/bin/bash, but it's not
+    # present in other OSes. /bin/bash is universal
+    export BASH_SHELL="/bin/bash"
+fi
+
 ./configure --prefix=$PREFIX \
             --disable-dependency-tracking \
             --enable-cxx \
