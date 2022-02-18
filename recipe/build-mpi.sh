@@ -51,7 +51,6 @@ export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib"
 export LIBRARY_PATH="$PREFIX/lib"
 
 if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && $target_platform == osx-arm64 ]]; then
-    export FFLAGS=$FFLAGS" -fallow-argument-mismatch"
     export pac_cv_f77_accepts_F=yes
     export pac_cv_f77_flibs_valid=unknown
     export pac_cv_f77_sizeof_double_precision=8
@@ -103,6 +102,19 @@ if [[ "$target_platform" == linux-* ]]; then
     # On linux-aarch64 centos image there's also a /usr/bin/bash, but it's not
     # present in other OSes. /bin/bash is universal
     export BASH_SHELL="/bin/bash"
+fi
+
+# Add -fallow-argument-mismatch for recent gfortran versions
+export FFLAGS="$FFLAGS -fallow-argument-mismatch"
+export FCFLAGS="$FCFLAGS -fallow-argument-mismatch"
+if [[ "$target_platform" == osx-* ]]; then
+    # Alternative workaround for clang + gfortran issues
+    # https://github.com/pmodels/mpich/issues/5768
+    # https://github.com/pmodels/mpich/pull/5771
+    export CFLAGS="$CFLAGS -fPIC"
+    export CXXFLAGS="$CXXFLAGS -fPIC"
+    export FFLAGS="$FFLAGS -fPIC"
+    export FCFLAGS="$FCFLAGS -fPIC"
 fi
 
 ./configure --prefix=$PREFIX \
