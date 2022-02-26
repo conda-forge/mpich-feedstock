@@ -51,7 +51,6 @@ export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib"
 export LIBRARY_PATH="$PREFIX/lib"
 
 if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && $target_platform == osx-arm64 ]]; then
-    export FFLAGS=$FFLAGS" -fallow-argument-mismatch"
     export pac_cv_f77_accepts_F=yes
     export pac_cv_f77_flibs_valid=unknown
     export pac_cv_f77_sizeof_double_precision=8
@@ -105,13 +104,22 @@ if [[ "$target_platform" == linux-* ]]; then
     export BASH_SHELL="/bin/bash"
 fi
 
+# TODO: update once osx-64 gets gfortran>=10
+if [[ "$target_platform" != osx-64 ]]; then
+    # allow argument mismatch in Fortran
+    # https://github.com/pmodels/mpich/issues/4300
+    export FFLAGS="$FFLAGS -fallow-argument-mismatch"
+    export FCFLAGS="$FCFLAGS -fallow-argument-mismatch"
+fi
+
 ./configure --prefix=$PREFIX \
             --disable-dependency-tracking \
             --enable-cxx \
             --enable-fortran \
             --disable-wrapper-rpath \
             --disable-opencl \
-            --with-device=ch3
+            --with-device=ch3 \
+            || cat config.log
 
 make -j"${CPU_COUNT:-1}"
 make install
