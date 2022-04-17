@@ -1,5 +1,5 @@
 {% set version = "3.4.3" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 # give conda package a higher build number
 {% if mpi_type == 'conda' %}
@@ -37,7 +37,7 @@ outputs:
     script: build-mpi.sh
     build:
       run_exports:
-        - {{ pin_subpackage('mpich', max_pin='x') }}
+        - mpich >={{ version }},<5.0a0
     requirements:
       build:
         - {{ compiler('c') }}
