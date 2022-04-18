@@ -1,5 +1,5 @@
-{% set version = "4.0.2" %}
-{% set build = 0 %}
+{% set version = "3.4.3" %}
+{% set build = 1 %}
 
 # give conda package a higher build number
 {% if mpi_type == 'conda' %}
@@ -14,7 +14,7 @@ package:
 source:
   fn: mpich-{{ version }}.tar.gz
   url: http://www.mpich.org/static/downloads/{{ version }}/mpich-{{ version }}.tar.gz
-  sha256: 5a42f1a889d4a2d996c26e48cbf9c595cbf4316c6814f7c181e3320d21dedd42
+  sha256: 8154d89f3051903181018166678018155f4c2b6f04a9bb6fe9515656452c4fd7
 
 build:
   number: {{ build }}
@@ -37,7 +37,7 @@ outputs:
     script: build-mpi.sh
     build:
       run_exports:
-        - {{ pin_subpackage('mpich', max_pin='x') }}
+        - mpich >={{ version }},<5.0a0
     requirements:
       build:
         - {{ compiler('c') }}
@@ -134,3 +134,4 @@ extra:
     - minrk
     - msarahan
     - ocefpaf
+    - beckermr

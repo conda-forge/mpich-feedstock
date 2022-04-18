@@ -244,6 +244,7 @@ Feedstock Maintainers
 =====================
 
 * [@astrofrog-conda-forge](https://github.com/astrofrog-conda-forge/)
+* [@beckermr](https://github.com/beckermr/)
 * [@bekozi](https://github.com/bekozi/)
 * [@dalcinl](https://github.com/dalcinl/)
 * [@minrk](https://github.com/minrk/)
