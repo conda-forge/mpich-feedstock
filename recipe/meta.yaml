@@ -1,4 +1,4 @@
-{% set version = "4.0.2" %}
+{% set version = "4.0.3" %}
 {% set build = 0 %}
 
 # give conda package a higher build number
@@ -14,7 +14,7 @@ package:
 source:
   fn: mpich-{{ version }}.tar.gz
   url: http://www.mpich.org/static/downloads/{{ version }}/mpich-{{ version }}.tar.gz
-  sha256: 5a42f1a889d4a2d996c26e48cbf9c595cbf4316c6814f7c181e3320d21dedd42
+  sha256: 17406ea90a6ed4ecd5be39c9ddcbfac9343e6ab4f77ac4e8c5ebe4a3e3b6c501
 
 build:
   number: {{ build }}
