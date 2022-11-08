@@ -45,70 +45,70 @@ Current build status
               <td>linux_64_mpi_typeconda</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpi_typeconda" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpi_typeconda" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_64_mpi_typeexternal</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpi_typeexternal" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpi_typeexternal" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_aarch64_mpi_typeconda</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpi_typeconda" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_mpi_typeconda" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_aarch64_mpi_typeexternal</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpi_typeexternal" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_mpi_typeexternal" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_ppc64le_mpi_typeconda</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpi_typeconda" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_mpi_typeconda" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_ppc64le_mpi_typeexternal</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpi_typeexternal" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_mpi_typeexternal" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_mpi_typeconda</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpi_typeconda" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpi_typeconda" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_mpi_typeexternal</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpi_typeexternal" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpi_typeexternal" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_mpi_typeconda</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=osx&configuration=osx_arm64_mpi_typeconda" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_mpi_typeconda" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_mpi_typeexternal</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=osx&configuration=osx_arm64_mpi_typeexternal" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_mpi_typeexternal" alt="variant">
                 </a>
               </td>
             </tr>
@@ -249,7 +249,4 @@ Feedstock Maintainers
 * [@minrk](https://github.com/minrk/)
 * [@msarahan](https://github.com/msarahan/)
 * [@ocefpaf](https://github.com/ocefpaf/)
-
-
-<!-- dummy commit to enable rerendering -->
 
