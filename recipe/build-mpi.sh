@@ -104,13 +104,10 @@ if [[ "$target_platform" == linux-* ]]; then
     export BASH_SHELL="/bin/bash"
 fi
 
-# TODO: update once osx-64 gets gfortran>=10
-if [[ "$target_platform" != osx-64 ]]; then
-    # allow argument mismatch in Fortran
-    # https://github.com/pmodels/mpich/issues/4300
-    export FFLAGS="$FFLAGS -fallow-argument-mismatch"
-    export FCFLAGS="$FCFLAGS -fallow-argument-mismatch"
-fi
+# Allow argument mismatch in Fortran
+# https://github.com/pmodels/mpich/issues/4300
+export FFLAGS="$FFLAGS -fallow-argument-mismatch"
+export FCFLAGS="$FCFLAGS -fallow-argument-mismatch"
 
 ./configure --prefix=$PREFIX \
             --disable-dependency-tracking \
