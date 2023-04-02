@@ -115,7 +115,7 @@ export FCFLAGS="$FCFLAGS -fallow-argument-mismatch"
             --enable-fortran \
             --disable-wrapper-rpath \
             --disable-opencl \
-            --with-device=ch3 \
+            --with-device=ch4 \
             || cat config.log
 
 make -j"${CPU_COUNT:-1}"
