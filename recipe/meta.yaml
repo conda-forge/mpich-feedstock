@@ -21,6 +21,8 @@ source:
   fn: mpich-{{ version }}.tar.gz
   url: https://www.mpich.org/static/downloads/{{ version_url }}/mpich-{{ version_url }}.tar.gz
   sha256: ee30471b35ef87f4c88f871a5e2ad3811cd9c4df32fd4f138443072ff4284ca2
+  patches:
+    - libfrabric-osx-lock.patch
 
 build:
   number: {{ build }}
