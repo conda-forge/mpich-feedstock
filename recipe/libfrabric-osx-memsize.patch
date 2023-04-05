@@ -1,0 +1,34 @@
+--- a/modules/libfabric/src/mem.c
++++ b/modules/libfabric/src/mem.c
+@@ -104,6 +104,23 @@ void ofi_mem_fini(void)
+ 	free(page_sizes);
+ }
+ 
++#if defined(__APPLE__) && !defined(_SC_PHYS_PAGES)
++
++#include <sys/sysctl.h>
++
++size_t ofi_get_mem_size(void)
++{
++	uint64_t mem_size;
++	size_t len;
++
++	len = sizeof(mem_size);
++	sysctlbyname("hw.memsize", &mem_size, &len, NULL, 0);
++
++	return (size_t) mem_size;
++}
++
++#else
++
+ size_t ofi_get_mem_size(void)
+ {
+ 	long page_cnt, page_size;
+@@ -122,6 +139,7 @@ size_t ofi_get_mem_size(void)
+ 	return mem_size;
+ }
+ 
++#endif
+ 
+ uint64_t OFI_RMA_PMEM;
+ void (*ofi_pmem_commit)(const void *addr, size_t len);

@@ -23,6 +23,7 @@ source:
   sha256: ee30471b35ef87f4c88f871a5e2ad3811cd9c4df32fd4f138443072ff4284ca2
   patches:
     - libfrabric-osx-lock.patch
+    - libfrabric-osx-memsize.patch
 
 build:
   number: {{ build }}
