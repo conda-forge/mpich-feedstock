@@ -1,17 +1,17 @@
-About mpich-mpi
-===============
-
-Home: http://www.mpich.org/
-
-Package license: LicenseRef-MPICH
+About mpich-mpi-feedstock
+=========================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/mpich-feedstock/blob/main/LICENSE.txt)
 
+Home: https://www.mpich.org/
+
+Package license: LicenseRef-MPICH
+
 Summary: A high performance widely portable implementation of the MPI standard.
 
-Development: https://wiki.mpich.org/mpich/index.php/Main_Page
+Development: https://github.com/pmodels/mpich
 
-Documentation: http://www.mpich.org/documentation/guides
+Documentation: https://www.mpich.org/documentation/guides
 
 MPICH is a high performance and widely portable implementation of the
 Message Passing Interface (MPI) standard.
@@ -21,14 +21,7 @@ Current build status
 ====================
 
 
-<table><tr>
-    <td>Travis</td>
-    <td>
-      <a href="https://app.travis-ci.com/conda-forge/mpich-feedstock">
-        <img alt="linux" src="https://img.shields.io/travis/com/conda-forge/mpich-feedstock/main.svg?label=Linux">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
