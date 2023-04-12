@@ -23,6 +23,12 @@ if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && $target_platform == osx-arm64 ]]; t
     ./autogen.sh
 fi
 
+if [[ "$target_platform" == "linux-ppc64le" ]]; then
+    # Fix symbol relocation errors
+    export CFLAGS="$CFLAGS -fplt"
+    export CXXFLAGS="$CXXFLAGS -fplt"
+fi
+
 # avoid recording flags in compilers
 # See Compiler Flags section of MPICH readme
 # TODO: configure ignores MPICHLIB_LDFLAGS
