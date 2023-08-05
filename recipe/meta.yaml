@@ -1,4 +1,4 @@
-{% set version = "4.1.1" %}
+{% set version = "4.1.2" %}
 {% set build = 0 %}
 
 {% if version.rpartition(".")[2] == "0" %}
@@ -20,9 +20,8 @@ package:
 source:
   fn: mpich-{{ version }}.tar.gz
   url: https://www.mpich.org/static/downloads/{{ version_url }}/mpich-{{ version_url }}.tar.gz
-  sha256: ee30471b35ef87f4c88f871a5e2ad3811cd9c4df32fd4f138443072ff4284ca2
+  sha256: 3492e98adab62b597ef0d292fb2459b6123bc80070a8aa0a30be6962075a12f0
   patches:
-    - libfrabric-osx-lock.patch
     - libfrabric-osx-memsize.patch
 
 build:
