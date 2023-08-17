@@ -133,7 +133,7 @@ about:
 
 extra:
   recipe-maintainers:
-    - astrofrog-conda-forge
+    - astrofrog
     - bekozi
     - dalcinl
     - minrk
