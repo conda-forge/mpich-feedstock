@@ -19,7 +19,7 @@ if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && $target_platform == osx-arm64 ]]; t
         echo "copying config to $config_folder ...\n"
         cp -v $BUILD_PREFIX/share/gnuconfig/config.* $config_folder
     done
-    
+
     ./autogen.sh
 fi
 
@@ -94,6 +94,7 @@ export FCFLAGS="$FCFLAGS -fallow-argument-mismatch"
             --enable-cxx \
             --enable-fortran \
             --enable-wrapper-dl-type=none \
+            --enable-f08 \
             --disable-opencl \
             --with-device=ch4 \
             || cat config.log
