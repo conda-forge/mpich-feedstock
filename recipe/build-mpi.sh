@@ -93,7 +93,7 @@ export FCFLAGS="$FCFLAGS -fallow-argument-mismatch"
             --disable-dependency-tracking \
             --enable-cxx \
             --enable-fortran \
-            --disable-wrapper-rpath \
+            --enable-wrapper-dl-type=none \
             --disable-opencl \
             --with-device=ch4 \
             || cat config.log
