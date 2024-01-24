@@ -1,5 +1,5 @@
 {% set version = "4.1.2" %}
-{% set build = 1 %}
+{% set build = 2 %}
 
 # MPICH does not add a ".0" version suffix in initial X.Y releases
 {% set version_url = version if version[-2:] != ".0" else version[:-2] %}
