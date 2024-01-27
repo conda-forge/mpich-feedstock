@@ -41,6 +41,9 @@ if [[ $PKG_NAME == "mpich-mpifort" ]]; then
   mpifort $FFLAGS $LDFLAGS helloworld.f90 -o helloworld1_f90
   $MPIEXEC -n 4 ./helloworld1_f90
 
+  mpifort $FFLAGS $LDFLAGS helloworld-f08.f90 -o helloworld-f081_f90
+  $MPIEXEC -n 4 ./helloworld-f081_f90
+
   command -v mpif77
   mpif77 -show
 
