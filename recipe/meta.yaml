@@ -117,7 +117,7 @@ outputs:
         - mpiexec.sh
         - tests/helloworld.f
         - tests/helloworld.f90
-        - tests/helloworld-f08.f90
+        - tests/helloworld.f08
   {% endif %}
 
 about:
