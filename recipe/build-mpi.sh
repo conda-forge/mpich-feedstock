@@ -29,6 +29,13 @@ if [[ "$target_platform" == "linux-ppc64le" ]]; then
     export CXXFLAGS="$CXXFLAGS -fplt"
 fi
 
+if [[ "$target_platform" == osx-* ]]; then
+  # Add gfortran internal header to clang include dir
+  fcdir=$($FC -print-search-dirs | awk '/install: /{print $2}')
+  ccdir=$($CC -print-search-dirs | awk '/libraries: =/{print substr($2,2)}')
+  ln -s $fcdir/include/ISO_Fortran_binding.h $ccdir/include
+fi
+
 # avoid recording flags in compilers
 # See Compiler Flags section of MPICH readme
 # TODO: configure ignores MPICHLIB_LDFLAGS
