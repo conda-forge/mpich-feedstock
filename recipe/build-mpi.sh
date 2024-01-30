@@ -19,7 +19,7 @@ if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && $target_platform == osx-arm64 ]]; t
         echo "copying config to $config_folder ...\n"
         cp -v $BUILD_PREFIX/share/gnuconfig/config.* $config_folder
     done
-    
+
     ./autogen.sh
 fi
 
@@ -27,6 +27,13 @@ if [[ "$target_platform" == "linux-ppc64le" ]]; then
     # Fix symbol relocation errors
     export CFLAGS="$CFLAGS -fplt"
     export CXXFLAGS="$CXXFLAGS -fplt"
+fi
+
+if [[ "$target_platform" == osx-* ]]; then
+  # Add gfortran internal header to clang include dir
+  fcdir=$($FC -print-search-dirs | awk '/install: /{print $2}')
+  ccdir=$($CC -print-search-dirs | awk '/libraries: =/{print substr($2,2)}')
+  ln -s $fcdir/include/ISO_Fortran_binding.h $ccdir/include
 fi
 
 # avoid recording flags in compilers
@@ -93,6 +100,7 @@ export FCFLAGS="$FCFLAGS -fallow-argument-mismatch"
             --disable-dependency-tracking \
             --enable-cxx \
             --enable-fortran \
+            --enable-f08 \
             --enable-wrapper-dl-type=none \
             --disable-opencl \
             --with-device=ch4 \
