@@ -33,11 +33,28 @@ if [[ "$target_platform" == osx-* ]]; then
   # Add gfortran internal header to clang include dir
   fcdir=$($FC -print-search-dirs | awk '/install: /{print $2}')
   ccdir=$($CC -print-search-dirs | awk '/libraries: =/{print substr($2,2)}')
-  ln -s $fcdir/include/ISO_Fortran_binding.h $ccdir/include
   echo "=== DEBUG ==="
+  echo "cp ${fcdir}include/ISO_Fortran_binding.h ${ccdir}include/ISO_Fortran_binding.h"
+  cp ${fcdir}include/ISO_Fortran_binding.h ${ccdir}include/ISO_Fortran_binding.h
   echo "CCDIR: ${ccdir}"
   echo "Content of ${ccdir}/include"
   echo "$(ls ${ccdir}/include)"
+
+  echo "C-compiler: $CC"
+
+  echo "Content of ${ccdir}include/ISO_Fortran_binding.h:"
+  cat ${ccdir}include/ISO_Fortran_binding.h
+
+
+  testprog=$(
+  cat <<EOF
+#include <ISO_Fortran_binding.h>
+int main() {return 0;}
+EOF
+  )
+  echo "$testprog" > test-ifb.c
+  $CC test-ifb.c -v
+
   exit 1
 fi
 
