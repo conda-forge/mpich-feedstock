@@ -34,8 +34,8 @@ if [[ "$target_platform" == osx-* ]]; then
   fcdir=$($FC -print-search-dirs | awk '/install: /{print $2}')
   ccdir=$($CC -print-search-dirs | awk '/libraries: =/{print substr($2,2)}')
   echo "=== DEBUG ==="
-  echo "cp ${fcdir}include/ISO_Fortran_binding.h ${ccdir}include/ISO_Fortran_binding.h"
-  cp ${fcdir}include/ISO_Fortran_binding.h ${ccdir}include/ISO_Fortran_binding.h
+  echo "cp ${fcdir}/include/ISO_Fortran_binding.h ${ccdir}/include"
+  cp ${fcdir}/include/ISO_Fortran_binding.h ${ccdir}/include
   echo "CCDIR: ${ccdir}"
   echo "Content of ${ccdir}/include"
   echo "$(ls ${ccdir}/include)"
