@@ -36,8 +36,8 @@ if [[ "$target_platform" == osx-* ]]; then
   ln -s $fcdir/include/ISO_Fortran_binding.h $ccdir/include
   echo "=== DEBUG ==="
   echo "CCDIR: ${ccdir}"
-  echo "Content of ${ccdir}"
-  echo "$(ls ${ccdir})"
+  echo "Content of ${ccdir}/include"
+  echo "$(ls ${ccdir}/include)"
   exit 1
 fi
 
