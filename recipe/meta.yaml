@@ -23,8 +23,7 @@ source:
 
 build:
   number: {{ build }}
-  #skip: true  # [win]
-  skip: true  # [win or not arm64]
+  skip: true  # [win]
 
 outputs:
   {% if mpi_type == 'external' %}
