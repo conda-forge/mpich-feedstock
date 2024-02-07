@@ -35,6 +35,62 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
+              <td>linux_64_mpi_typeconda</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpi_typeconda" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_mpi_typeexternal</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_mpi_typeexternal" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_aarch64_mpi_typeconda</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_mpi_typeconda" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_aarch64_mpi_typeexternal</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_mpi_typeexternal" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_ppc64le_mpi_typeconda</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_mpi_typeconda" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_ppc64le_mpi_typeexternal</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_mpi_typeexternal" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_mpi_typeconda</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpi_typeconda" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_mpi_typeexternal</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_mpi_typeexternal" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>osx_arm64_mpi_typeconda</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
