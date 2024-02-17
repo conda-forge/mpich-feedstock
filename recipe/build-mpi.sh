@@ -91,11 +91,6 @@ if [[ "$target_platform" == linux-* ]]; then
     export BASH_SHELL="/bin/bash"
 fi
 
-# Allow argument mismatch in Fortran
-# https://github.com/pmodels/mpich/issues/4300
-export FFLAGS="$FFLAGS -fallow-argument-mismatch"
-export FCFLAGS="$FCFLAGS -fallow-argument-mismatch"
-
 ./configure --prefix=$PREFIX \
             --disable-dependency-tracking \
             --enable-cxx \
