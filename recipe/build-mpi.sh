@@ -96,7 +96,7 @@ fi
             --enable-cxx \
             --enable-fortran \
             --enable-f08 \
-            --enable-wrapper-dl-type=none \
+            --with-wrapper-dl-type=none \
             --disable-opencl \
             --with-device=ch4 \
             || cat config.log
