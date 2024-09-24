@@ -52,12 +52,6 @@ outputs:
       host:
         - {{ fortran_compiler }}_{{ target_platform }} {{ fortran_compiler_version }}  # hack to force conda to make both fortran abi builds
         - libhwloc
-        - libnl  # [linux]
-        - libnuma  # [linux and not ppc64le]
-        - libudev1  # [linux and not ppc64le]
-        - numactl  # [linux and not ppc64le]
-        - rdma-core  # [linux and not ppc64le]
-        - zlib
         - ucx  # [linux and not ppc64le]
       run_constrained:
         - {{ pin_compatible("ucx", max_pin="x.x") }}  # [linux and not ppc64le]          
@@ -158,3 +152,4 @@ extra:
     - minrk
     - msarahan
     - ocefpaf
+    - j34ni

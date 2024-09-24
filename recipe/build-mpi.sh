@@ -4,7 +4,12 @@
 # with a fatal deprecation message pointing to FC
 unset F90 F77
 
-export FCFLAGS="$FFLAGS"
+# add -fallow-argument-mismatch to FCFLAGS
+if [[ "$target_platform" != linux-ppc64le ]]; then
+   export FCFLAGS="-fallow-argument-mismatch ${FCFLAGS}"
+else
+   export FCFLAGS="$FFLAGS"
+fi
 
 # avoid absolute-paths in compilers
 export CC=$(basename "$CC")
@@ -63,6 +68,13 @@ export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib"
 
 export LIBRARY_PATH="$PREFIX/lib"
 
+# UCX support
+build_with_ucx=""
+if [[ "$target_platform" == linux-* && "$target_platform" != linux-ppc64le ]]; then
+    echo "Build with UCX support"
+    build_with_ucx="--with-ucx=$PREFIX"
+fi
+
 if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 ]]; then
   if [[ "$target_platform" == "osx-arm64" || "$target_platform" == "linux-aarch64" || "$target_platform" == "linux-ppc64le" ]]; then
     export CROSS_F77_SIZEOF_INTEGER=4
@@ -92,8 +104,8 @@ if [[ "$target_platform" == linux-* ]]; then
 fi
 
 ./configure --prefix=$PREFIX \
-	    --enable-fast=O3 \
-	    --enable-romio \
+            --enable-fast=O3 \
+            --enable-romio \
             --disable-dependency-tracking \
             --enable-cxx \
             --enable-fortran \
@@ -101,10 +113,10 @@ fi
             --with-wrapper-dl-type=none \
             --disable-opencl \
             --with-device=ch4:ucx \
-	    --with-hwloc=$PREFIX \
-	    --with-ucx=$PREFIX \
-	    --enable-nemesis-shm-collectives \
+            --with-hwloc=$PREFIX \
+            $build_with_ucx \
+            --enable-nemesis-shm-collectives \
             || cat config.log
 
-make -j16
+make -j"${CPU_COUNT:-1}" 
 make install
