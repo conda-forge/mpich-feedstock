@@ -71,7 +71,7 @@ outputs:
         - mpiexec.sh
         - tests/helloworld.sh
       env:  
-        - UCX_KEEPALIVE_INTERVAL=0
+        - UCX_KEEPALIVE_INTERVAL=10
       {% else %}
       commands:
         - echo "It works!"
