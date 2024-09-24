@@ -9,9 +9,6 @@ pushd "tests"
 if [[ $PKG_NAME == "mpich" ]]; then
   command -v mpichversion
   mpichversion
-
-  export UCX_KEEPALIVE_INTERVAL=10
-  echo "UCX_KEEPALIVE_INTERVAL is set to: $UCX_KEEPALIVE_INTERVAL"
   
   command -v mpiexec
   $MPIEXEC -n 1 mpivars
@@ -21,9 +18,6 @@ fi
 if [[ $PKG_NAME == "mpich-mpicc" ]]; then
   command -v mpicc
   mpicc -show
-
-  export UCX_KEEPALIVE_INTERVAL=10
-  echo "UCX_KEEPALIVE_INTERVAL is set to: $UCX_KEEPALIVE_INTERVAL"
   
   mpicc $CFLAGS $LDFLAGS helloworld.c -o helloworld_c
   $MPIEXEC -n 4 ./helloworld_c
@@ -32,9 +26,6 @@ fi
 if [[ $PKG_NAME == "mpich-mpicxx" ]]; then
   command -v mpicxx
   mpicxx -show
-
-  export UCX_KEEPALIVE_INTERVAL=10
-  echo "UCX_KEEPALIVE_INTERVAL is set to: $UCX_KEEPALIVE_INTERVAL"
   
   mpicxx $CXXFLAGS $LDFLAGS helloworld.cxx -o helloworld_cxx
   $MPIEXEC -n 4 ./helloworld_cxx
@@ -44,9 +35,6 @@ if [[ $PKG_NAME == "mpich-mpifort" ]]; then
   command -v mpifort
   mpifort -show
 
-  export UCX_KEEPALIVE_INTERVAL=10
-  echo "UCX_KEEPALIVE_INTERVAL is set to: $UCX_KEEPALIVE_INTERVAL"
-  
   mpifort $FFLAGS $LDFLAGS helloworld.f -o helloworld1_f
   $MPIEXEC -n 4 ./helloworld1_f
 
