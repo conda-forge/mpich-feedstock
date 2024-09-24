@@ -72,7 +72,9 @@ export LIBRARY_PATH="$PREFIX/lib"
 build_with_ucx=""
 if [[ "$target_platform" == linux-* && "$target_platform" != linux-ppc64le ]]; then
     echo "Build with UCX support"
-    build_with_ucx="--with-ucx=$PREFIX"
+    build_with_ucx="--with-device=ch4:ucx --with-ucx=$PREFIX --enable-nemesis-shm-collectives"
+else
+    build_with_ucx="--with-device=ch4"	
 fi
 
 if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 ]]; then
@@ -112,10 +114,8 @@ fi
             --enable-f08 \
             --with-wrapper-dl-type=none \
             --disable-opencl \
-            --with-device=ch4:ucx \
             --with-hwloc=$PREFIX \
             $build_with_ucx \
-            --enable-nemesis-shm-collectives \
             || cat config.log
 
 make -j"${CPU_COUNT:-1}" 
