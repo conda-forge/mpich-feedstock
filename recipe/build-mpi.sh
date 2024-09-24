@@ -92,14 +92,19 @@ if [[ "$target_platform" == linux-* ]]; then
 fi
 
 ./configure --prefix=$PREFIX \
+	    --enable-fast=O3 \
+	    --enable-romio \
             --disable-dependency-tracking \
             --enable-cxx \
             --enable-fortran \
             --enable-f08 \
             --with-wrapper-dl-type=none \
             --disable-opencl \
-            --with-device=ch4 \
+            --with-device=ch4:ucx \
+	    --with-hwloc=$PREFIX \
+	    --with-ucx=$PREFIX \
+	    --enable-nemesis-shm-collectives \
             || cat config.log
 
-make -j"${CPU_COUNT:-1}"
+make -j16
 make install
