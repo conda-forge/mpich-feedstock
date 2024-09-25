@@ -6,6 +6,8 @@
 {% set build = build + 100 %}
 {% endif %}
 
+{% set CONDA_BUILD_SYSROOT = CONDA_BUILD_SYSROOT | default('') %}
+ 
 package:
   # must not match any outputs for requirements to be handled correctly
   name: mpich-mpi
