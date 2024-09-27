@@ -38,8 +38,8 @@ outputs:
       track_features:
         - mpich_{{ mpi_type }}
       {% endif %}
-      ignore_run_exports:
-        - ucx  # [linux]
+      ignore_run_exports_from:
+        - ucx
     requirements:
       build:
         - {{ compiler('c') }}
@@ -59,13 +59,6 @@ outputs:
         - {{ pin_compatible("ucx", max_pin="x.x") }}  # [linux and not ppc64le]          
       run:
         - mpi 1.0 mpich
-        - libhwloc
-        - libnl  # [linux]
-        - libnuma  # [linux and not ppc64le]
-        - libudev1  # [linux and not ppc64le]
-        - numactl  # [linux and not ppc64le]
-        - rdma-core  # [linux and not ppc64le]          
-        - ucx  # [linux and not ppc64le]
     test:
       {% if mpi_type == 'conda' %}
       script: run_test.sh
