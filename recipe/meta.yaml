@@ -60,7 +60,7 @@ outputs:
         - {{ compiler("c") }}
       files:
         - mpiexec.sh
-        - tests/helloworld.sh
+        - tests
       {% else %}
       commands:
         - echo "It works!"
