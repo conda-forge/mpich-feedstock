@@ -4,12 +4,7 @@
 # with a fatal deprecation message pointing to FC
 unset F90 F77
 
-# add -fallow-argument-mismatch to FCFLAGS
-if [[ "$target_platform" != linux-ppc64le ]]; then
-   export FCFLAGS="-fallow-argument-mismatch ${FCFLAGS}"
-else
-   export FCFLAGS="$FFLAGS"
-fi
+export FCFLAGS="$FFLAGS"
 
 # avoid absolute-paths in compilers
 export CC=$(basename "$CC")
@@ -72,9 +67,9 @@ export LIBRARY_PATH="$PREFIX/lib"
 build_with_ucx=""
 if [[ "$target_platform" == linux-* && "$target_platform" != linux-ppc64le ]]; then
     echo "Build with UCX support"
-    build_with_ucx="--with-device=ch4:ucx --with-ucx=$PREFIX --enable-nemesis-shm-collectives"
+    build_with_ucx="--with-device=ch4:ofi,ucx --with-ucx=$PREFIX"
 else
-    build_with_ucx="--with-device=ch4"	
+    build_with_ucx="--with-device=ch4:ofi"
 fi
 
 if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 ]]; then
@@ -115,8 +110,9 @@ fi
             --with-wrapper-dl-type=none \
             --disable-opencl \
             --with-hwloc=$PREFIX \
+             --enable-nemesis-shm-collectives \
             $build_with_ucx \
-            || cat config.log
+            || (cat config.log; exit 1)
 
-make -j"${CPU_COUNT:-1}" 
+make -j"${CPU_COUNT:-1}"
 make install
