@@ -30,8 +30,6 @@ libhwloc:
 - 2.11.1
 mpi_type:
 - external
-rdma_core:
-- '53'
 target_platform:
 - linux-aarch64
 ucx:

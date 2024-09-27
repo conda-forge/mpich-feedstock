@@ -28,8 +28,6 @@ mpi_type:
 - external
 target_platform:
 - linux-ppc64le
-ucx:
-- 1.16.0
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

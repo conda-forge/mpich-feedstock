@@ -26,8 +26,6 @@ libhwloc:
 - 2.11.1
 mpi_type:
 - conda
-rdma_core:
-- '53'
 target_platform:
 - linux-64
 ucx:
