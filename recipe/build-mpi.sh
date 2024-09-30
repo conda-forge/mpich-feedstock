@@ -1,4 +1,5 @@
 #!/bin/bash
+set -ex
 
 # configure balks if F90 is defined
 # with a fatal deprecation message pointing to FC
