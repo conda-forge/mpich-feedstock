@@ -102,7 +102,6 @@ if [[ "$target_platform" == linux-* ]]; then
 fi
 
 ./configure --prefix=$PREFIX \
-            --enable-fast=O3 \
             --disable-dependency-tracking \
             --enable-cxx \
             --enable-fortran \
