@@ -10,6 +10,9 @@ if [[ $PKG_NAME == "mpich" ]]; then
   command -v mpichversion
   mpichversion
 
+  test -f $PREFIX/lib/libmpi${SHLIB_EXT}
+  test ! -f $PREFIX/lib/libmpi.a
+
   command -v mpiexec
   $MPIEXEC -n 1 mpivars
   $MPIEXEC -n 4 ./helloworld.sh

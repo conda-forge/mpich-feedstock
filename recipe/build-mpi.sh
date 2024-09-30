@@ -97,6 +97,7 @@ fi
             --enable-fortran \
             --enable-f08 \
             --with-wrapper-dl-type=none \
+            --disable-static \
             --disable-opencl \
             --with-device=ch4 \
             || cat config.log
