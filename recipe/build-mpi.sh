@@ -103,7 +103,6 @@ fi
 
 ./configure --prefix=$PREFIX \
             --enable-fast=O3 \
-            --enable-romio \
             --disable-dependency-tracking \
             --enable-cxx \
             --enable-fortran \
@@ -111,7 +110,6 @@ fi
             --with-wrapper-dl-type=none \
             --disable-opencl \
             --with-hwloc=$PREFIX \
-             --enable-nemesis-shm-collectives \
             $build_with_ucx \
             || (cat config.log; exit 1)
 
