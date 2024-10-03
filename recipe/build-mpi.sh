@@ -1,4 +1,5 @@
 #!/bin/bash
+set -ex
 
 # configure balks if F90 is defined
 # with a fatal deprecation message pointing to FC
@@ -63,6 +64,15 @@ export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib"
 
 export LIBRARY_PATH="$PREFIX/lib"
 
+# UCX support
+build_with_ucx=""
+if [[ "$target_platform" == linux-* && "$target_platform" != linux-ppc64le ]]; then
+    echo "Build with UCX support"
+    build_with_ucx="--with-device=ch4:ofi,ucx --with-ucx=$PREFIX"
+else
+    build_with_ucx="--with-device=ch4:ofi"
+fi
+
 if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 ]]; then
   if [[ "$target_platform" == "osx-arm64" || "$target_platform" == "linux-aarch64" || "$target_platform" == "linux-ppc64le" ]]; then
     export CROSS_F77_SIZEOF_INTEGER=4
@@ -99,8 +109,9 @@ fi
             --with-wrapper-dl-type=none \
             --disable-static \
             --disable-opencl \
-            --with-device=ch4 \
-            || cat config.log
+            --with-hwloc=$PREFIX \
+            $build_with_ucx \
+            || (cat config.log; exit 1)
 
 make -j"${CPU_COUNT:-1}"
 make install

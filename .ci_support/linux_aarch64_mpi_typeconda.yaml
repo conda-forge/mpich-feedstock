@@ -26,10 +26,14 @@ fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '13'
+libhwloc:
+- 2.11.1
 mpi_type:
 - conda
 target_platform:
 - linux-aarch64
+ucx:
+- 1.16.0
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

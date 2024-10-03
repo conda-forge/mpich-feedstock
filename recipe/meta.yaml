@@ -1,5 +1,5 @@
 {% set version = "4.2.3" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 # give conda package a higher build number
 {% if mpi_type == 'conda' %}
@@ -49,14 +49,18 @@ outputs:
         - gnuconfig  # [arm64]
       host:
         - {{ fortran_compiler }}_{{ target_platform }} {{ fortran_compiler_version }}  # hack to force conda to make both fortran abi builds
+        - libhwloc
+        - ucx  # [linux and not ppc64le]
       run:
         - mpi 1.0.* mpich
     test:
       {% if mpi_type == 'conda' %}
       script: run_test.sh
+      requires:
+        - {{ compiler("c") }}
       files:
         - mpiexec.sh
-        - tests/helloworld.sh
+        - tests
       {% else %}
       commands:
         - echo "It works!"
@@ -130,3 +134,4 @@ extra:
     - minrk
     - msarahan
     - ocefpaf
+    - j34ni
