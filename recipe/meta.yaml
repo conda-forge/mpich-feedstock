@@ -50,7 +50,7 @@ outputs:
       host:
         - {{ fortran_compiler }}_{{ target_platform }} {{ fortran_compiler_version }}  # hack to force conda to make both fortran abi builds
       run:
-        - mpi 1.0 mpich
+        - mpi 1.0.* mpich
     test:
       {% if mpi_type == 'conda' %}
       script: run_test.sh
