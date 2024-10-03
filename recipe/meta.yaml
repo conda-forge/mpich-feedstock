@@ -1,5 +1,5 @@
-{% set version = "4.2.2" %}
-{% set build = 3 %}
+{% set version = "4.2.3" %}
+{% set build = 1 %}
 
 # give conda package a higher build number
 {% if mpi_type == 'conda' %}
@@ -14,7 +14,7 @@ package:
 source:
   fn: mpich-{{ version }}.tar.gz
   url: https://www.mpich.org/static/downloads/{{ version }}/mpich-{{ version }}.tar.gz
-  sha256: 883f5bb3aeabf627cb8492ca02a03b191d09836bbe0f599d8508351179781d41
+  sha256: 7a019180c51d1738ad9c5d8d452314de65e828ee240bcb2d1f80de9a65be88a8
   patches:
     - libfrabric-osx-memsize.patch
 
@@ -52,7 +52,7 @@ outputs:
         - libhwloc
         - ucx  # [linux and not ppc64le]
       run:
-        - mpi 1.0 mpich
+        - mpi 1.0.* mpich
     test:
       {% if mpi_type == 'conda' %}
       script: run_test.sh
