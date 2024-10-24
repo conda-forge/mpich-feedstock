@@ -2,7 +2,7 @@
 set -exuo pipefail
 
 export HYDRA_LAUNCHER=fork
-MPIEXEC="${PWD}/mpiexec.sh"
+MPIEXEC="mpiexec"
 
 pushd "tests"
 
