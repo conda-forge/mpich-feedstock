@@ -1,4 +1,5 @@
 #!/bin/bash
+set -ex
 
 # configure balks if F90 is defined
 # with a fatal deprecation message pointing to FC
@@ -11,7 +12,7 @@ export CC=$(basename "$CC")
 export CXX=$(basename "$CXX")
 export FC=$(basename "$FC")
 
-if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && $target_platform == osx-arm64 ]]; then
+if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && "$target_platform" == osx-arm64 ]]; then
     # use Conda-Forge's Arm64 config.guess and config.sub, see
     # https://conda-forge.org/blog/posts/2020-10-29-macos-arm64/
     list_config_to_patch=$(find ./ -name config.guess | sed -E 's/config.guess//')
@@ -63,8 +64,15 @@ export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib"
 
 export LIBRARY_PATH="$PREFIX/lib"
 
+# OFI and UCX support
+with_device="--with-device=ch4:ofi"
+if [[ "$target_platform" == linux-* && "$target_platform" != linux-ppc64le ]]; then
+    echo "Build with UCX support"
+    with_device="--with-device=ch4:ofi,ucx --with-ucx=$PREFIX"
+fi
+
 if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 ]]; then
-  if [[ "$target_platform" == "osx-arm64" || "$target_platform" == "linux-aarch64" || "$target_platform" == "linux-ppc64le" ]]; then
+  if [[ "$target_platform" == osx-arm64 || "$target_platform" == linux-aarch64 || "$target_platform" == linux-ppc64le ]]; then
     export CROSS_F77_SIZEOF_INTEGER=4
     export CROSS_F77_SIZEOF_REAL=4
     export CROSS_F77_SIZEOF_DOUBLE_PRECISION=8
@@ -99,8 +107,9 @@ fi
             --with-wrapper-dl-type=none \
             --disable-static \
             --disable-opencl \
-            --with-device=ch4 \
-            || cat config.log
+            $with_device \
+            --with-hwloc=$PREFIX \
+            || (cat config.log; exit 1)
 
 make -j"${CPU_COUNT:-1}"
 make install
