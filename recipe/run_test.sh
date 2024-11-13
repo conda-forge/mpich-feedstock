@@ -1,8 +1,8 @@
 #!/bin/bash
-set -ex
+set -exuo pipefail
 
 export HYDRA_LAUNCHER=fork
-MPIEXEC="${PWD}/mpiexec.sh"
+MPIEXEC="mpiexec"
 
 pushd "tests"
 
@@ -18,12 +18,50 @@ if [[ $PKG_NAME == "mpich" ]]; then
   $MPIEXEC -n 4 ./helloworld.sh
 fi
 
+# verify OFI and UCX netmods
+check_netmods()
+{
+  executable=$1
+
+  # these debug flags let us identify which netmod is loaded
+  export MPICH_CH4_UCX_CAPABILITY_DEBUG=1
+  export MPICH_CH4_OFI_CAPABILITY_DEBUG=1
+
+  check_ofi=yes
+  check_ucx=no
+  if [[ "$target_platform" == linux-* && "$target_platform" != linux-ppc64le ]]; then
+      check_ucx=yes
+  fi
+
+  # default is OFI (set by order in --with-device)
+  if [[ $check_ofi == yes ]]; then
+    $MPIEXEC -n 1 "$executable" | grep OFI
+  fi
+
+  # explicit OFI
+  if [[ $check_ofi == yes ]]; then
+    export MPICH_CH4_NETMOD=ofi
+    $MPIEXEC -n 1 "$executable" | grep OFI
+  fi
+
+  # explicit UCX
+  if [[ $check_ucx == yes ]]; then
+    export MPICH_CH4_NETMOD=ucx
+    $MPIEXEC -n 1 "$executable" | grep UCX
+  fi
+
+  unset MPICH_CH4_UCX_CAPABILITY_DEBUG
+  unset MPICH_CH4_OFI_CAPABILITY_DEBUG
+  unset MPICH_CH4_NETMOD
+}
+
 if [[ $PKG_NAME == "mpich-mpicc" ]]; then
   command -v mpicc
   mpicc -show
 
   mpicc $CFLAGS $LDFLAGS helloworld.c -o helloworld_c
   $MPIEXEC -n 4 ./helloworld_c
+  check_netmods ./helloworld_c
 fi
 
 if [[ $PKG_NAME == "mpich-mpicxx" ]]; then
@@ -32,6 +70,7 @@ if [[ $PKG_NAME == "mpich-mpicxx" ]]; then
 
   mpicxx $CXXFLAGS $LDFLAGS helloworld.cxx -o helloworld_cxx
   $MPIEXEC -n 4 ./helloworld_cxx
+  check_netmods ./helloworld_cxx
 fi
 
 if [[ $PKG_NAME == "mpich-mpifort" ]]; then
