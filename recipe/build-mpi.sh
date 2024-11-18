@@ -37,7 +37,12 @@ fi
 
 # avoid recording flags in compilers
 # See Compiler Flags section of MPICH readme
-# TODO: configure ignores MPICHLIB_LDFLAGS
+# MPICHLIB_LDFLAGS is removed in 4.2.x,
+# we backport PR 6932 which puts it back
+# https://github.com/pmodels/mpich/pull/6932
+# FIXME: remove autoreconf when we no longer need patch 6932
+autoreconf -i -f
+
 export MPICHLIB_CPPFLAGS=$CPPFLAGS
 unset CPPFLAGS
 export MPICHLIB_CFLAGS=$CFLAGS

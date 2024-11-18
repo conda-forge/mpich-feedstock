@@ -1,0 +1,166 @@
+From 2f4bbe130047f8e746557e81613e6d6dbd3c8eca Mon Sep 17 00:00:00 2001
+From: Ken Raffenetti <raffenet@mcs.anl.gov>
+Date: Mon, 4 Mar 2024 16:15:38 -0600
+Subject: [PATCH 1/2] Revert "Remove MPICHLIB_LDFLAGS/LIBS"
+
+This reverts commit
+4d93cefa8f2fb06fdc47d8f73ed46c3623b8dfd6. pmodels/mpich#6904 has a valid
+use-case that we should support. An additional commit will modify the
+compile scripts so these flags will not leak out of the build.
+---
+ README.vin   | 8 ++++----
+ configure.ac | 6 ++++++
+ 2 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/README.vin b/README.vin
+index a7200a2390f..fa2dd0a6c27 100644
+--- a/README.vin
++++ b/README.vin
+@@ -305,10 +305,10 @@ MPICH library being compiled/linked with these flags and the flags
+ internally being used in mpicc and friends.
+ 
+ (b) MPICHLIB_CFLAGS, MPICHLIB_CPPFLAGS, MPICHLIB_CXXFLAGS,
+-MPICHLIB_FFLAGS, and MPICHLIB_FCFLAGS (abbreviated as
+-MPICHLIB_xFLAGS): Setting these flags would result in the MPICH
+-library being compiled with these flags.  However, these flags will
+-*not* be used by mpicc and friends.
++MPICHLIB_FFLAGS, MPICHLIB_FCFLAGS, MPICHLIB_LDFLAGS and
++MPICHLIB_LIBS (abbreviated as MPICHLIB_xFLAGS): Setting these flags
++would result in the MPICH library being compiled/linked with these
++flags. However, these flags will *not* be used by mpicc and friends.
+ 
+ (c) MPICH_MPICC_CFLAGS, MPICH_MPICC_CPPFLAGS, MPICH_MPICC_LDFLAGS,
+ MPICH_MPICC_LIBS, and so on for MPICXX, MPIF77 and MPIFORT
+diff --git a/configure.ac b/configure.ac
+index 85f4b2984d0..66c57abd28b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -302,11 +302,17 @@ AC_ARG_VAR(MPICHLIB_FFLAGS,
+ 	[extra FFLAGS used in building MPICH libraries])
+ AC_ARG_VAR(MPICHLIB_FCFLAGS,
+ 	[extra FCFLAGS used in building MPICH libraries])
++AC_ARG_VAR(MPICHLIB_LDFLAGS,
++	[extra LDFLAGS used in building MPICH libraries])
++AC_ARG_VAR(MPICHLIB_LIBS,
++	[extra LIBS used in building MPICH libraries])
+ CFLAGS="$CFLAGS $MPICHLIB_CFLAGS"
+ CPPFLAGS="$CPPFLAGS $MPICHLIB_CPPFLAGS"
+ CXXFLAGS="$CXXFLAGS $MPICHLIB_CXXFLAGS"
+ FFLAGS="$FFLAGS $MPICHLIB_FFLAGS"
+ FCFLAGS="$FCFLAGS $MPICHLIB_FCFLAGS"
++LDFLAGS="$LDFLAGS $MPICHLIB_LDFLAGS"
++LIBS="$LIBS $MPICHLIB_LIBS"
+ 
+ # Save a copy of precious flags as USER_* before any of these flags
+ # are being modified by configure tests.
+
+From 4371df303ea02cda74cbb7cecf21bc4512d1f69c Mon Sep 17 00:00:00 2001
+From: Ken Raffenetti <raffenet@mcs.anl.gov>
+Date: Wed, 6 Mar 2024 16:06:13 -0600
+Subject: [PATCH 2/2] env: Use LDFLAGS without MPICHLIB_LDFLAGS in wrapper
+ scripts
+
+MPICHLIB_LDFLAGS should only be used to build the MPICH library.
+---
+ configure.ac            | 4 ++++
+ src/env/mpicc.bash.in   | 2 +-
+ src/env/mpicc.sh.in     | 2 +-
+ src/env/mpicxx.bash.in  | 2 +-
+ src/env/mpicxx.sh.in    | 2 +-
+ src/env/mpifort.bash.in | 2 +-
+ src/env/mpifort.sh.in   | 2 +-
+ 7 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 66c57abd28b..acbf8057bfb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -311,6 +311,10 @@ CPPFLAGS="$CPPFLAGS $MPICHLIB_CPPFLAGS"
+ CXXFLAGS="$CXXFLAGS $MPICHLIB_CXXFLAGS"
+ FFLAGS="$FFLAGS $MPICHLIB_FFLAGS"
+ FCFLAGS="$FCFLAGS $MPICHLIB_FCFLAGS"
++# Save LDFLAGS before merging with MPICHLIB_LDFLAGS. The wrapper scripts
++# may need this in case interlibrary dependencies are not supported.
++SAVE_LDFLAGS=$LDFLAGS
++AC_SUBST(SAVE_LDFLAGS)
+ LDFLAGS="$LDFLAGS $MPICHLIB_LDFLAGS"
+ LIBS="$LIBS $MPICHLIB_LIBS"
+ 
+diff --git a/src/env/mpicc.bash.in b/src/env/mpicc.bash.in
+index ee3f46b2d5c..949decedf52 100644
+--- a/src/env/mpicc.bash.in
++++ b/src/env/mpicc.bash.in
+@@ -262,7 +262,7 @@ final_cppflags="@MPICH_MPICC_CPPFLAGS@ @WRAPPER_CPPFLAGS@"
+ final_ldflags="@MPICH_MPICC_LDFLAGS@ @WRAPPER_LDFLAGS@"
+ final_libs="@MPICH_MPICC_LIBS@"
+ if test "@INTERLIB_DEPS@" = "no" -o "${interlib_deps}" = "no" ; then
+-    final_ldflags="${final_ldflags} @LDFLAGS@"
++    final_ldflags="${final_ldflags} @SAVE_LDFLAGS@"
+     final_libs="${final_libs} __LIBS_TO_BE_FILLED_AT_INSTALL_TIME__"
+ fi
+ 
+diff --git a/src/env/mpicc.sh.in b/src/env/mpicc.sh.in
+index 71ef02d1f2d..b7cc8eb4c47 100644
+--- a/src/env/mpicc.sh.in
++++ b/src/env/mpicc.sh.in
+@@ -268,7 +268,7 @@ final_cppflags="@MPICH_MPICC_CPPFLAGS@ @WRAPPER_CPPFLAGS@"
+ final_ldflags="@MPICH_MPICC_LDFLAGS@ @WRAPPER_LDFLAGS@"
+ final_libs="@MPICH_MPICC_LIBS@"
+ if test "@INTERLIB_DEPS@" = "no" -o "${interlib_deps}" = "no" ; then
+-    final_ldflags="${final_ldflags} @LDFLAGS@"
++    final_ldflags="${final_ldflags} @SAVE_LDFLAGS@"
+     final_libs="${final_libs} __LIBS_TO_BE_FILLED_AT_INSTALL_TIME__"
+ fi
+ 
+diff --git a/src/env/mpicxx.bash.in b/src/env/mpicxx.bash.in
+index 4c31d1196a3..f853f3cda9b 100644
+--- a/src/env/mpicxx.bash.in
++++ b/src/env/mpicxx.bash.in
+@@ -267,7 +267,7 @@ final_cppflags="@MPICH_MPICXX_CPPFLAGS@ @WRAPPER_CPPFLAGS@"
+ final_ldflags="@MPICH_MPICXX_LDFLAGS@ @WRAPPER_LDFLAGS@"
+ final_libs="@MPICH_MPICXX_LIBS@"
+ if test "@INTERLIB_DEPS@" = "no" -o "${interlib_deps}" = "no" ; then
+-    final_ldflags="${final_ldflags} @LDFLAGS@"
++    final_ldflags="${final_ldflags} @SAVE_LDFLAGS@"
+     final_libs="${final_libs} __LIBS_TO_BE_FILLED_AT_INSTALL_TIME__"
+ fi
+ 
+diff --git a/src/env/mpicxx.sh.in b/src/env/mpicxx.sh.in
+index c5bca740db9..c930b03ab4c 100644
+--- a/src/env/mpicxx.sh.in
++++ b/src/env/mpicxx.sh.in
+@@ -273,7 +273,7 @@ final_cppflags="@MPICH_MPICXX_CPPFLAGS@ @WRAPPER_CPPFLAGS@"
+ final_ldflags="@MPICH_MPICXX_LDFLAGS@ @WRAPPER_LDFLAGS@"
+ final_libs="@MPICH_MPICXX_LIBS@"
+ if test "@INTERLIB_DEPS@" = "no" -o "${interlib_deps}" = "no" ; then
+-    final_ldflags="${final_ldflags} @LDFLAGS@"
++    final_ldflags="${final_ldflags} @SAVE_LDFLAGS@"
+     final_libs="${final_libs} __LIBS_TO_BE_FILLED_AT_INSTALL_TIME__"
+ fi
+ 
+diff --git a/src/env/mpifort.bash.in b/src/env/mpifort.bash.in
+index 5312aeafa08..8799741d91b 100644
+--- a/src/env/mpifort.bash.in
++++ b/src/env/mpifort.bash.in
+@@ -339,7 +339,7 @@ final_fcflags="@MPICH_MPIFORT_FCFLAGS@ @WRAPPER_FCFLAGS@"
+ final_ldflags="@MPICH_MPIFORT_LDFLAGS@ @WRAPPER_LDFLAGS@"
+ final_libs="@MPICH_MPIFORT_LIBS@"
+ if test "@INTERLIB_DEPS@" = "no" -o "${interlib_deps}" = "no" ; then
+-    final_ldflags="${final_ldflags} @LDFLAGS@"
++    final_ldflags="${final_ldflags} @SAVE_LDFLAGS@"
+     final_libs="${final_libs} __LIBS_TO_BE_FILLED_AT_INSTALL_TIME__"
+ fi
+ 
+diff --git a/src/env/mpifort.sh.in b/src/env/mpifort.sh.in
+index 902b0f71ee7..311573ba9e4 100644
+--- a/src/env/mpifort.sh.in
++++ b/src/env/mpifort.sh.in
+@@ -356,7 +356,7 @@ final_fcflags="@MPICH_MPIFORT_FCFLAGS@ @WRAPPER_FCFLAGS@"
+ final_ldflags="@MPICH_MPIFORT_LDFLAGS@ @WRAPPER_LDFLAGS@"
+ final_libs="@MPICH_MPIFORT_LIBS@"
+ if test "@INTERLIB_DEPS@" = "no" -o "${interlib_deps}" = "no" ; then
+-    final_ldflags="${final_ldflags} @LDFLAGS@"
++    final_ldflags="${final_ldflags} @SAVE_LDFLAGS@"
+     final_libs="${final_libs} __LIBS_TO_BE_FILLED_AT_INSTALL_TIME__"
+ fi
+ 
