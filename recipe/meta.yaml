@@ -1,5 +1,5 @@
 {% set version = "4.2.3" %}
-{% set build = 1 %}
+{% set build = 2 %}
 
 # give conda package a higher build number
 {% if mpi_type == 'conda' %}
@@ -16,7 +16,6 @@ source:
   url: https://www.mpich.org/static/downloads/{{ version }}/mpich-{{ version }}.tar.gz
   sha256: 7a019180c51d1738ad9c5d8d452314de65e828ee240bcb2d1f80de9a65be88a8
   patches:
-    - libfrabric-osx-memsize.patch
     - 7189.patch
 
 build:
@@ -43,12 +42,12 @@ outputs:
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
         - {{ stdlib("c") }}
-        - autoconf  # [unix]
-        - automake  # [unix]
-        - libtool   # [unix]
-        - make  # [unix]
-        - gnuconfig  # [arm64]
+        - make
+        - autoconf  # [osx and arm64]
+        - automake  # [osx and arm64]
+        - gnuconfig  # [osx and arm64]
       host:
+        - libfabric
         - libhwloc
         - ucx  # [linux and not ppc64le]
       run:

@@ -12,7 +12,7 @@ export CC=$(basename "$CC")
 export CXX=$(basename "$CXX")
 export FC=$(basename "$FC")
 
-if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && "$target_platform" == osx-arm64 ]]; then
+if [[ "$target_platform" == osx-arm64 ]]; then
     # use Conda-Forge's Arm64 config.guess and config.sub, see
     # https://conda-forge.org/blog/posts/2020-10-29-macos-arm64/
     list_config_to_patch=$(find ./ -name config.guess | sed -E 's/config.guess//')
@@ -108,6 +108,7 @@ fi
             --disable-static \
             --disable-opencl \
             $with_device \
+            --with-libfabric=$PREFIX \
             --with-hwloc=$PREFIX \
             || (cat config.log; exit 1)
 
