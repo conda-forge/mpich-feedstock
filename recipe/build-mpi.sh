@@ -12,7 +12,7 @@ export CC=$(basename "$CC")
 export CXX=$(basename "$CXX")
 export FC=$(basename "$FC")
 
-if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && "$target_platform" == osx-arm64 ]]; then
+if [[ "$target_platform" == osx-arm64 ]]; then
     # use Conda-Forge's Arm64 config.guess and config.sub, see
     # https://conda-forge.org/blog/posts/2020-10-29-macos-arm64/
     list_config_to_patch=$(find ./ -name config.guess | sed -E 's/config.guess//')
@@ -20,8 +20,6 @@ if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 && "$target_platform" == osx-arm64 ]];
         echo "copying config to $config_folder ...\n"
         cp -v $BUILD_PREFIX/share/gnuconfig/config.* $config_folder
     done
-
-    ./autogen.sh
 fi
 
 if [[ "$target_platform" == "linux-ppc64le" ]]; then
@@ -39,7 +37,12 @@ fi
 
 # avoid recording flags in compilers
 # See Compiler Flags section of MPICH readme
-# TODO: configure ignores MPICHLIB_LDFLAGS
+# MPICHLIB_LDFLAGS is removed in 4.2.x,
+# we backport PR 6932 which puts it back
+# https://github.com/pmodels/mpich/pull/6932
+# FIXME: remove autoreconf when we no longer need patch 6932
+autoreconf -i -f
+
 export MPICHLIB_CPPFLAGS=$CPPFLAGS
 unset CPPFLAGS
 export MPICHLIB_CFLAGS=$CFLAGS
@@ -100,14 +103,15 @@ if [[ "$target_platform" == linux-* ]]; then
 fi
 
 ./configure --prefix=$PREFIX \
+            --disable-doc \
             --disable-dependency-tracking \
             --enable-cxx \
             --enable-fortran \
             --enable-f08 \
             --with-wrapper-dl-type=none \
             --disable-static \
-            --disable-opencl \
             $with_device \
+            --with-libfabric=$PREFIX \
             --with-hwloc=$PREFIX \
             || (cat config.log; exit 1)
 
