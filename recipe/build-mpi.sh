@@ -20,8 +20,6 @@ if [[ "$target_platform" == osx-arm64 ]]; then
         echo "copying config to $config_folder ...\n"
         cp -v $BUILD_PREFIX/share/gnuconfig/config.* $config_folder
     done
-
-    ./autogen.sh
 fi
 
 if [[ "$target_platform" == "linux-ppc64le" ]]; then

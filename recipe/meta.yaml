@@ -43,8 +43,6 @@ outputs:
         - {{ compiler('fortran') }}
         - {{ stdlib("c") }}
         - make
-        - autoconf  # [osx and arm64]
-        - automake  # [osx and arm64]
         - gnuconfig  # [osx and arm64]
       host:
         - libfabric
