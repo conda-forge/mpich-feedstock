@@ -98,8 +98,7 @@ if [[ "$target_platform" == linux-* ]]; then
 fi
 
 ./configure --prefix=$PREFIX \
-            --with-docdir=$PWD/_noinst/doc \
-            --with-mandir=$PWD/_noinst/man \
+            --disable-doc \
             --disable-dependency-tracking \
             --enable-cxx \
             --enable-fortran \
