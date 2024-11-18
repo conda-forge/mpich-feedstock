@@ -8,34 +8,11 @@ This reverts commit
 use-case that we should support. An additional commit will modify the
 compile scripts so these flags will not leak out of the build.
 ---
- README.vin   | 8 ++++----
- configure.ac | 6 ++++++
- 2 files changed, 10 insertions(+), 4 deletions(-)
-
-diff --git a/README.vin b/README.vin
-index a7200a2390f..fa2dd0a6c27 100644
---- a/README.vin
-+++ b/README.vin
-@@ -305,10 +305,10 @@ MPICH library being compiled/linked with these flags and the flags
- internally being used in mpicc and friends.
- 
- (b) MPICHLIB_CFLAGS, MPICHLIB_CPPFLAGS, MPICHLIB_CXXFLAGS,
--MPICHLIB_FFLAGS, and MPICHLIB_FCFLAGS (abbreviated as
--MPICHLIB_xFLAGS): Setting these flags would result in the MPICH
--library being compiled with these flags.  However, these flags will
--*not* be used by mpicc and friends.
-+MPICHLIB_FFLAGS, MPICHLIB_FCFLAGS, MPICHLIB_LDFLAGS and
-+MPICHLIB_LIBS (abbreviated as MPICHLIB_xFLAGS): Setting these flags
-+would result in the MPICH library being compiled/linked with these
-+flags. However, these flags will *not* be used by mpicc and friends.
- 
- (c) MPICH_MPICC_CFLAGS, MPICH_MPICC_CPPFLAGS, MPICH_MPICC_LDFLAGS,
- MPICH_MPICC_LIBS, and so on for MPICXX, MPIF77 and MPIFORT
 diff --git a/configure.ac b/configure.ac
-index 85f4b2984d0..66c57abd28b 100644
+index d6b937e82..bd0b06371 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -302,11 +302,17 @@ AC_ARG_VAR(MPICHLIB_FFLAGS,
+@@ -302,11 +302,21 @@
  	[extra FFLAGS used in building MPICH libraries])
  AC_ARG_VAR(MPICHLIB_FCFLAGS,
  	[extra FCFLAGS used in building MPICH libraries])
@@ -48,9 +25,13 @@ index 85f4b2984d0..66c57abd28b 100644
  CXXFLAGS="$CXXFLAGS $MPICHLIB_CXXFLAGS"
  FFLAGS="$FFLAGS $MPICHLIB_FFLAGS"
  FCFLAGS="$FCFLAGS $MPICHLIB_FCFLAGS"
++# Save LDFLAGS before merging with MPICHLIB_LDFLAGS. The wrapper scripts
++# may need this in case interlibrary dependencies are not supported.
++SAVE_LDFLAGS=$LDFLAGS
++AC_SUBST(SAVE_LDFLAGS)
 +LDFLAGS="$LDFLAGS $MPICHLIB_LDFLAGS"
 +LIBS="$LIBS $MPICHLIB_LIBS"
- 
+
  # Save a copy of precious flags as USER_* before any of these flags
  # are being modified by configure tests.
 
@@ -62,7 +43,6 @@ Subject: [PATCH 2/2] env: Use LDFLAGS without MPICHLIB_LDFLAGS in wrapper
 
 MPICHLIB_LDFLAGS should only be used to build the MPICH library.
 ---
- configure.ac            | 4 ++++
  src/env/mpicc.bash.in   | 2 +-
  src/env/mpicc.sh.in     | 2 +-
  src/env/mpicxx.bash.in  | 2 +-
@@ -71,21 +51,6 @@ MPICHLIB_LDFLAGS should only be used to build the MPICH library.
  src/env/mpifort.sh.in   | 2 +-
  7 files changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/configure.ac b/configure.ac
-index 66c57abd28b..acbf8057bfb 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -311,6 +311,10 @@ CPPFLAGS="$CPPFLAGS $MPICHLIB_CPPFLAGS"
- CXXFLAGS="$CXXFLAGS $MPICHLIB_CXXFLAGS"
- FFLAGS="$FFLAGS $MPICHLIB_FFLAGS"
- FCFLAGS="$FCFLAGS $MPICHLIB_FCFLAGS"
-+# Save LDFLAGS before merging with MPICHLIB_LDFLAGS. The wrapper scripts
-+# may need this in case interlibrary dependencies are not supported.
-+SAVE_LDFLAGS=$LDFLAGS
-+AC_SUBST(SAVE_LDFLAGS)
- LDFLAGS="$LDFLAGS $MPICHLIB_LDFLAGS"
- LIBS="$LIBS $MPICHLIB_LIBS"
- 
 diff --git a/src/env/mpicc.bash.in b/src/env/mpicc.bash.in
 index ee3f46b2d5c..949decedf52 100644
 --- a/src/env/mpicc.bash.in
