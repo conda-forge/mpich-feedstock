@@ -104,7 +104,6 @@ fi
             --enable-f08 \
             --with-wrapper-dl-type=none \
             --disable-static \
-            --disable-opencl \
             $with_device \
             --with-libfabric=$PREFIX \
             --with-hwloc=$PREFIX \
