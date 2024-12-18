@@ -1,5 +1,5 @@
 {% set version = "4.2.3" %}
-{% set build = 2 %}
+{% set build = 3 %}
 
 # give conda package a higher build number
 {% if mpi_type == 'conda' %}
@@ -50,7 +50,7 @@ outputs:
         - libtool
         - gnuconfig  # [osx and arm64]
       host:
-        - libfabric
+        - libfabric-devel {{ libfabric }}.*
         - libhwloc
         - ucx  # [linux and not ppc64le]
       run:
