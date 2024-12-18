@@ -61,11 +61,12 @@ outputs:
       files:
         - mpiexec.sh
         - tests/helloworld.sh
+      {% endif %}
       commands:
+      {% if mpi_type == 'conda' %}
         - test ! -f $PREFIX/doc/mpich
         - test ! -f $PREFIX/share/man/man3/MPI_Barrier.3
       {% else %}
-      commands:
         - echo "It works!"
       {% endif %}
 
