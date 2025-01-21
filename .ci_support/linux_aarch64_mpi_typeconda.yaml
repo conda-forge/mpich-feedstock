@@ -28,6 +28,8 @@ libhwloc:
 - 2.11.2
 mpi_type:
 - conda
+mpich:
+- '4'
 target_platform:
 - linux-aarch64
 ucx:
