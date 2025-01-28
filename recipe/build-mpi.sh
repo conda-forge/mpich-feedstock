@@ -95,6 +95,12 @@ if [[ "$target_platform" == linux-* ]]; then
     export BASH_SHELL="/bin/bash"
 fi
 
+with_ucx=""
+if [[ "$target_platform" == linux-* && "$target_platform" != linux-ppc64le ]]; then
+    echo "Build with UCX support"
+    with_ucx="--with-ucx=$PREFIX"
+fi
+
 ./configure --prefix=$PREFIX \
             --disable-doc \
             --disable-dependency-tracking \
@@ -104,7 +110,7 @@ fi
             --enable-static=no \
             --with-hwloc=$PREFIX \
             --with-libfabric=$PREFIX \
-	    --with-ucx=$PREFIX \
+	    $with_ucx \
             || (cat config.log; exit 1)
 
 make -j"${CPU_COUNT:-1}"

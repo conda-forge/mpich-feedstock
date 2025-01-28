@@ -14,7 +14,7 @@ package:
 source:
   fn: mpich-{{ version }}.tar.gz
   url: https://www.mpich.org/static/downloads/{{ version }}/mpich-{{ version }}.tar.gz
-  sha256: 7a019180c51d1738ad9c5d8d452314de65e828ee240bcb2d1f80de9a65be88a8
+  sha256: sha256: 7a019180c51d1738ad9c5d8d452314de65e828ee240bcb2d1f80de9a65be88a8
   patches:
     - 6932.patch
     - 7189.patch
@@ -127,6 +127,11 @@ about:
   description: |
     MPICH is a high performance and widely portable implementation of the
     Message Passing Interface (MPI) standard.
+
+    ### Selecting Netmods: OFI or UCX
+    Only one *netmod* can be active at runtime, you select which one to use by setting the `MPICH_CH4_NETMOD` environment variable as follows:
+    for the UCX netmod use `export MPICH_CH4_NETMOD=ucx`, and for the OFI netmod `export MPICH_CH4_NETMOD=ofi`.
+
   doc_url: https://www.mpich.org/documentation/guides
   dev_url: https://github.com/pmodels/mpich
 
