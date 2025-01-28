@@ -67,13 +67,6 @@ export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib"
 
 export LIBRARY_PATH="$PREFIX/lib"
 
-# OFI and UCX support
-with_device="--with-device=ch4:ofi"
-if [[ "$target_platform" == linux-* && "$target_platform" != linux-ppc64le ]]; then
-    echo "Build with UCX support"
-    with_device="--with-device=ch4:ofi,ucx --with-ucx=$PREFIX"
-fi
-
 if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 ]]; then
   if [[ "$target_platform" == osx-arm64 || "$target_platform" == linux-aarch64 || "$target_platform" == linux-ppc64le ]]; then
     export CROSS_F77_SIZEOF_INTEGER=4
@@ -106,13 +99,12 @@ fi
             --disable-doc \
             --disable-dependency-tracking \
             --enable-cxx \
-            --enable-fortran \
-            --enable-f08 \
+	    --enable-romio \
             --with-wrapper-dl-type=none \
-            --disable-static \
-            $with_device \
-            --with-libfabric=$PREFIX \
+            --enable-static=no \
             --with-hwloc=$PREFIX \
+            --with-libfabric=$PREFIX \
+	    --with-ucx=$PREFIX \
             || (cat config.log; exit 1)
 
 make -j"${CPU_COUNT:-1}"
