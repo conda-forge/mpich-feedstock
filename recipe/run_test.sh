@@ -33,9 +33,11 @@ check_netmods()
       check_ucx=yes
   fi
 
-  # default is OFI (set by order in --with-device)
-  if [[ $check_ofi == yes ]]; then
-    $MPIEXEC -n 1 "$executable" | grep OFI
+  # default is UCX (set by order in --with-device if available)
+  if [[ $check_ucx == yes ]]; then
+      $MPIEXEC -n 1 "$executable" | grep UCX
+  else
+      $MPIEXEC -n 1 "$executable" | grep OFI
   fi
 
   # explicit OFI
