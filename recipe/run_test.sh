@@ -14,6 +14,9 @@ if [[ $PKG_NAME == "mpich" ]]; then
   test ! -f $PREFIX/lib/libmpi.a
 
   command -v mpiexec
+  command -v mpiexec.hydra
+  command -v mpiexec.gforker
+
   $MPIEXEC -n 1 mpivars
   $MPIEXEC -n 4 ./helloworld.sh
 fi
@@ -33,9 +36,11 @@ check_netmods()
       check_ucx=yes
   fi
 
-  # default is OFI (set by order in --with-device)
-  if [[ $check_ofi == yes ]]; then
-    $MPIEXEC -n 1 "$executable" | grep OFI
+  # default is UCX (set by order in --with-device if available)
+  if [[ $check_ucx == yes ]]; then
+      $MPIEXEC -n 1 "$executable" | grep UCX
+  else
+      $MPIEXEC -n 1 "$executable" | grep OFI
   fi
 
   # explicit OFI

@@ -67,11 +67,13 @@ export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib"
 
 export LIBRARY_PATH="$PREFIX/lib"
 
-# OFI and UCX support
-with_device="--with-device=ch4:ofi"
+# UCX and OFI support
 if [[ "$target_platform" == linux-* && "$target_platform" != linux-ppc64le ]]; then
-    echo "Build with UCX support"
-    with_device="--with-device=ch4:ofi,ucx --with-ucx=$PREFIX"
+    echo "Build with UCX+OFI support"
+    with_device="--with-device=ch4:ucx,ofi --with-ucx=$PREFIX --with-libfabric=$PREFIX"
+else
+    echo "Build with OFI support"
+    with_device="--with-device=ch4:ofi --with-libfabric=$PREFIX"
 fi
 
 if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 ]]; then
@@ -111,8 +113,9 @@ fi
             --with-wrapper-dl-type=none \
             --disable-static \
             $with_device \
-            --with-libfabric=$PREFIX \
             --with-hwloc=$PREFIX \
+            --with-yaksa=embedded \
+            --with-pm=hydra:gforker \
             || (cat config.log; exit 1)
 
 make -j"${CPU_COUNT:-1}"
