@@ -115,6 +115,7 @@ fi
             $with_device \
             --with-hwloc=$PREFIX \
             --with-yaksa=embedded \
+            --with-pm=hydra:gforker \
             || (cat config.log; exit 1)
 
 make -j"${CPU_COUNT:-1}"

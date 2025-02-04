@@ -14,6 +14,9 @@ if [[ $PKG_NAME == "mpich" ]]; then
   test ! -f $PREFIX/lib/libmpi.a
 
   command -v mpiexec
+  command -v mpiexec.hydra
+  command -v mpiexec.gforker
+
   $MPIEXEC -n 1 mpivars
   $MPIEXEC -n 4 ./helloworld.sh
 fi
