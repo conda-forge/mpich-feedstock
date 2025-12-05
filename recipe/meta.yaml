@@ -1,5 +1,5 @@
 {% set version = "4.3.2" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 # give conda package a higher build number
 {% if mpi_type == 'conda' %}
@@ -32,9 +32,22 @@ outputs:
       {% else %}
       string: {{ mpi_type }}_h{{ PKG_HASH }}_{{ build }}
       track_features:
+        # four total features is a hack for solver
+        # priority issues in https://github.com/conda-forge/mpich-feedstock/issues/95
+        # the rule is that the number of features here has to be greater than the sum
+        # of the number of features across all possible dependencies of the non-external
+        # packages. See https://github.com/conda-forge/mpich-feedstock/issues/95#issuecomment-3617935263
+        # some manual queries of the repodata indicated that as of late 2025, this sum was ~2.
+        # we are using four total here to have a buffer.
+        # if this number ever changes, all previous external builds need to be patched to
+        # match the same number. Otherwise, chaos. - MRB (beckermr)
         - mpich_{{ mpi_type }}
+        - mpich_1_{{ mpi_type }}
+        - mpich_2_{{ mpi_type }}
+        - mpich_3_{{ mpi_type }}
       {% endif %}
     requirements:
+      {% if mpi_type == 'conda' %}
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
@@ -50,6 +63,7 @@ outputs:
         - libfabric-devel {{ libfabric }}.*
         - libhwloc
         - ucx  # [linux and not ppc64le]
+      {% endif %}
       run:
         - mpi 1.0.* mpich
     test:
