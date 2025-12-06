@@ -42,9 +42,9 @@ outputs:
         # if this number ever changes, all previous external builds need to be patched to
         # match the same number. Otherwise, chaos. - MRB (beckermr)
         - mpich_{{ mpi_type }}
-        - mpich_1_{{ mpi_type }}
-        - mpich_2_{{ mpi_type }}
-        - mpich_3_{{ mpi_type }}
+        - mpich_{{ mpi_type }}_1
+        - mpich_{{ mpi_type }}_2
+        - mpich_{{ mpi_type }}_3
       {% endif %}
     requirements:
       {% if mpi_type == 'conda' %}
