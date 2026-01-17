@@ -1,5 +1,5 @@
-About mpich-mpi-feedstock
-=========================
+About mpich-feedstock
+=====================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/mpich-feedstock/blob/main/LICENSE.txt)
 
@@ -15,7 +15,6 @@ Documentation: https://www.mpich.org/documentation/guides
 
 MPICH is a high performance and widely portable implementation of the
 Message Passing Interface (MPI) standard.
-
 
 Current build status
 ====================
@@ -35,59 +34,24 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_channel_targetsconda-forge_mainmpi_typeconda</td>
+              <td>linux_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_channel_targetsconda-forge_mainmpi_typeconda" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_channel_targetsconda-forge_mpi-externalmpi_typeexternal</td>
+              <td>linux_aarch64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_channel_targetsconda-forge_mpi-externalmpi_typeexternal" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_channel_targetsconda-forge_mainmpi_typeconda</td>
+              <td>linux_ppc64le</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_channel_targetsconda-forge_mainmpi_typeconda" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_channel_targetsconda-forge_mpi-externalmpi_typeexternal</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_channel_targetsconda-forge_mpi-externalmpi_typeexternal" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_channel_targetsconda-forge_mainmpi_typeconda</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_channel_targetsconda-forge_mainmpi_typeconda" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_channel_targetsconda-forge_mpi-externalmpi_typeexternal</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_channel_targetsconda-forge_mpi-externalmpi_typeexternal" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=645&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mpich-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -104,55 +68,52 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-mpich-green.svg)](https://anaconda.org/conda-forge/mpich) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mpich.svg)](https://anaconda.org/conda-forge/mpich) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mpich.svg)](https://anaconda.org/conda-forge/mpich) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mpich.svg)](https://anaconda.org/conda-forge/mpich) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-mpich--mpicc-green.svg)](https://anaconda.org/conda-forge/mpich-mpicc) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mpich-mpicc.svg)](https://anaconda.org/conda-forge/mpich-mpicc) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mpich-mpicc.svg)](https://anaconda.org/conda-forge/mpich-mpicc) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mpich-mpicc.svg)](https://anaconda.org/conda-forge/mpich-mpicc) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-mpich--mpicxx-green.svg)](https://anaconda.org/conda-forge/mpich-mpicxx) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mpich-mpicxx.svg)](https://anaconda.org/conda-forge/mpich-mpicxx) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mpich-mpicxx.svg)](https://anaconda.org/conda-forge/mpich-mpicxx) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mpich-mpicxx.svg)](https://anaconda.org/conda-forge/mpich-mpicxx) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-mpich--mpifort-green.svg)](https://anaconda.org/conda-forge/mpich-mpifort) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/mpich-mpifort.svg)](https://anaconda.org/conda-forge/mpich-mpifort) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mpich-mpifort.svg)](https://anaconda.org/conda-forge/mpich-mpifort) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/mpich-mpifort.svg)](https://anaconda.org/conda-forge/mpich-mpifort) |
 
-Installing mpich-mpi
-====================
+Installing mpich
+================
 
-Installing `mpich-mpi` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `mpich` from the `conda-forge/label/mpi-external` channel can be achieved by adding `conda-forge/label/mpi-external` to your channels with:
 
 ```
-conda config --add channels conda-forge
+conda config --add channels conda-forge/label/mpi-external
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `mpich, mpich-mpicc, mpich-mpicxx, mpich-mpifort` can be installed with `conda`:
+Once the `conda-forge/label/mpi-external` channel has been enabled, `mpich` can be installed with `conda`:
 
 ```
-conda install mpich mpich-mpicc mpich-mpicxx mpich-mpifort
+conda install mpich
 ```
 
 or with `mamba`:
 
 ```
-mamba install mpich mpich-mpicc mpich-mpicxx mpich-mpifort
+mamba install mpich
 ```
 
 It is possible to list all of the versions of `mpich` available on your platform with `conda`:
 
 ```
-conda search mpich --channel conda-forge
+conda search mpich --channel conda-forge/label/mpi-external
 ```
 
 or with `mamba`:
 
 ```
-mamba search mpich --channel conda-forge
+mamba search mpich --channel conda-forge/label/mpi-external
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search mpich --channel conda-forge
+mamba repoquery search mpich --channel conda-forge/label/mpi-external
 
 # List packages depending on `mpich`:
-mamba repoquery whoneeds mpich --channel conda-forge
+mamba repoquery whoneeds mpich --channel conda-forge/label/mpi-external
 
 # List dependencies of `mpich`:
-mamba repoquery depends mpich --channel conda-forge
+mamba repoquery depends mpich --channel conda-forge/label/mpi-external
 ```
 
 
@@ -197,17 +158,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating mpich-mpi-feedstock
-============================
+Updating mpich-feedstock
+========================
 
-If you would like to improve the mpich-mpi recipe or build a new
+If you would like to improve the mpich recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/mpich-mpi-feedstock are
+Note that all branches in the conda-forge/mpich-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks, and branches in the main repository should only be used to
 build distinct package versions.
