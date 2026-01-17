@@ -1,9 +1,7 @@
 channel_targets:
-  - conda-forge mpi-external  # [linux]
-  - conda-forge main
+  - conda-forge mpi-external
 mpi_type:
-  - external  # [linux]
-  - conda
+  - external
 libfabric:
   # build against libfabric 1.19
   # for compatibility with ABI 1.6 (libfabric 1.14)

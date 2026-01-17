@@ -1,0 +1,48 @@
+schema_version: 1
+
+context:
+  version: 3.4.3
+  build: 2
+  string_prefix: 'external_'
+
+recipe:
+  name: mpich
+  version: ${{ version }}
+
+build:
+  number: ${{ build }}
+  skip: not linux
+
+outputs:
+  - package:
+      name: mpich
+    build:
+      string: ${{ string_prefix }}h${{ hash }}_${{ build }}
+      
+    requirements:
+      run:
+        - mpi 1.0.* mpich
+    tests:
+      - script:
+          - echo 'ok'
+
+about:
+  homepage: https://www.mpich.org/
+  license: LicenseRef-MPICH
+  license_file: COPYRIGHT
+  summary: A high performance widely portable implementation of the MPI standard.
+  description: |
+    MPICH is a high performance and widely portable implementation of the
+    Message Passing Interface (MPI) standard.
+  documentation: https://www.mpich.org/documentation/guides
+  repository: https://github.com/pmodels/mpich
+
+extra:
+  recipe-maintainers:
+    - astrofrog
+    - bekozi
+    - dalcinl
+    - minrk
+    - msarahan
+    - ocefpaf
+    - j34ni
