@@ -108,6 +108,7 @@ fi
             --enable-cxx \
             --enable-fortran \
             --enable-f08 \
+            --enable-mpi-abi \
             --with-wrapper-dl-type=none \
             --disable-static \
             $with_device \
