@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   version: "5.0.0"
-  build: 0
+  build: 1
   mpi_type: ${{ mpi_type | default('conda') }}
 
 recipe:
@@ -10,7 +10,7 @@ recipe:
   version: ${{ version }}
 
 source:
-  url: https://www.mpich.org/static/downloads/${{ version }}/mpich-${{ version }}.tar.gz
+  url: https://github.com/pmodels/mpich/releases/download/v${{ version }}/mpich-${{ version }}.tar.gz
   sha256: e9350e32224283e95311f22134f36c98e3cd1c665d17fae20a6cc92ed3cffe11
 
 build:
