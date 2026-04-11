@@ -110,14 +110,14 @@ Current release info
 Installing mpich
 ================
 
-Installing `mpich` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `mpich` from the `conda-forge/label/mpi-external` channel can be achieved by adding `conda-forge/label/mpi-external` to your channels with:
 
 ```
-conda config --add channels conda-forge
+conda config --add channels conda-forge/label/mpi-external
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `mpich, mpich-mpicc, mpich-mpicxx, mpich-mpifort` can be installed with `conda`:
+Once the `conda-forge/label/mpi-external` channel has been enabled, `mpich, mpich-mpicc, mpich-mpicxx, mpich-mpifort` can be installed with `conda`:
 
 ```
 conda install mpich mpich-mpicc mpich-mpicxx mpich-mpifort
@@ -132,26 +132,26 @@ mamba install mpich mpich-mpicc mpich-mpicxx mpich-mpifort
 It is possible to list all of the versions of `mpich` available on your platform with `conda`:
 
 ```
-conda search mpich --channel conda-forge
+conda search mpich --channel conda-forge/label/mpi-external
 ```
 
 or with `mamba`:
 
 ```
-mamba search mpich --channel conda-forge
+mamba search mpich --channel conda-forge/label/mpi-external
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search mpich --channel conda-forge
+mamba repoquery search mpich --channel conda-forge/label/mpi-external
 
 # List packages depending on `mpich`:
-mamba repoquery whoneeds mpich --channel conda-forge
+mamba repoquery whoneeds mpich --channel conda-forge/label/mpi-external
 
 # List dependencies of `mpich`:
-mamba repoquery depends mpich --channel conda-forge
+mamba repoquery depends mpich --channel conda-forge/label/mpi-external
 ```
 
 
