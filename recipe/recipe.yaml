@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   version: "5.0.1"
-  build: 0
+  build: 1
   mpi_type: ${{ mpi_type | default('conda') }}
 
 recipe:
@@ -12,6 +12,8 @@ recipe:
 source:
   url: https://github.com/pmodels/mpich/releases/download/v${{ version }}/mpich-${{ version }}.tar.gz
   sha256: 8c1832a13ddacf071685069f5fadfd1f2877a29e1a628652892c65211b1f3327
+  patches:
+    - libmpi_abi-soversion.patch
 
 build:
   number: ${{ build }}
