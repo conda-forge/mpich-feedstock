@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   version: "5.0.1"
-  build: 2
+  build: 3
   mpi_type: ${{ mpi_type | default('conda') }}
 
 recipe:
