@@ -66,7 +66,7 @@ export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib"
 export LIBRARY_PATH="$PREFIX/lib"
 
 # UCX and OFI support
-if [[ "$target_platform" == linux-* && "$target_platform" != linux-ppc64le ]]; then
+if [[ "$target_platform" == linux-64 || "$target_platform" == linux-aarch64 ]]; then
     echo "Build with UCX+OFI support"
     with_device="--with-device=ch4:ucx,ofi --with-ucx=$PREFIX --with-libfabric=$PREFIX"
 else
