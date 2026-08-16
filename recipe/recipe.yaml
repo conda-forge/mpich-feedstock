@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   version: "5.0.1"
-  build: 3
+  build: 4
   mpi_type: ${{ mpi_type | default('conda') }}
 
 recipe:
@@ -45,7 +45,7 @@ outputs:
           then:
             - libfabric-devel ${{ libfabric }}.*
             - libhwloc
-            - if: linux and not ppc64le
+            - if: linux and (x86_64 or aarch64)
               then: ucx
       run:
         - mpi 1.0.* mpich

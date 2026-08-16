@@ -66,7 +66,7 @@ export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib"
 export LIBRARY_PATH="$PREFIX/lib"
 
 # UCX and OFI support
-if [[ "$target_platform" == linux-* && "$target_platform" != linux-ppc64le ]]; then
+if [[ "$target_platform" == linux-64 || "$target_platform" == linux-aarch64 ]]; then
     echo "Build with UCX+OFI support"
     with_device="--with-device=ch4:ucx,ofi --with-ucx=$PREFIX --with-libfabric=$PREFIX"
 else
@@ -75,7 +75,7 @@ else
 fi
 
 if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 ]]; then
-  if [[ "$target_platform" == osx-arm64 || "$target_platform" == linux-aarch64 || "$target_platform" == linux-ppc64le ]]; then
+  if [[ "$target_platform" == osx-arm64 || "$target_platform" == linux-aarch64 || "$target_platform" == linux-ppc64le || "$target_platform" == linux-riscv64 ]]; then
     export CROSS_F77_SIZEOF_INTEGER=4
     export CROSS_F77_SIZEOF_REAL=4
     export CROSS_F77_SIZEOF_DOUBLE_PRECISION=8
