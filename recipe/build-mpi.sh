@@ -24,13 +24,6 @@ if [[ "$target_platform" == "linux-ppc64le" ]]; then
     export CXXFLAGS="$CXXFLAGS -fplt"
 fi
 
-if [[ "$target_platform" == osx-* ]]; then
-  # Add gfortran internal header to clang include dir
-  fcdir=$($FC -print-search-dirs | awk '/install: /{print $2}')
-  ccdir=$($CC -print-search-dirs | awk '/libraries: =/{print substr($2,2)}')
-  cp ${fcdir}/include/ISO_Fortran_binding.h ${ccdir}/include
-fi
-
 export MPICHLIB_CPPFLAGS=$CPPFLAGS
 unset CPPFLAGS
 export MPICHLIB_CFLAGS=$CFLAGS
