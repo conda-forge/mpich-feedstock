@@ -25,6 +25,9 @@ if [[ "$target_platform" == "linux-ppc64le" ]]; then
 fi
 
 if [[ "$target_platform" == osx-* ]]; then
+  # Make sure we use clang
+  export CC=$(basename "${CLANG:?}")
+  export CXX=$(basename "${CLANGXX:?}")
   # Add gfortran internal header to clang include dir
   fcdir=$($FC -print-search-dirs | awk '/install: /{print $2}')
   ccdir=$($CC -print-search-dirs | awk '/libraries: =/{print substr($2,2)}')
