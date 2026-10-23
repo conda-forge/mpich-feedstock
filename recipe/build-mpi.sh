@@ -68,7 +68,7 @@ else
 fi
 
 if [[ $CONDA_BUILD_CROSS_COMPILATION == 1 ]]; then
-  if [[ "$target_platform" == osx-arm64 || "$target_platform" == linux-aarch64 || "$target_platform" == linux-ppc64le ]]; then
+  if [[ "$target_platform" == osx-arm64 || "$target_platform" == linux-aarch64 || "$target_platform" == linux-ppc64le || "$target_platform" == linux-riscv64 ]]; then
     export CROSS_F77_SIZEOF_INTEGER=4
     export CROSS_F77_SIZEOF_REAL=4
     export CROSS_F77_SIZEOF_DOUBLE_PRECISION=8
